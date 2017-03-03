@@ -1,0 +1,19 @@
+@font-face {
+  font-family: KristenITC;
+  src: url("./kristen-itc.TTF");
+}
+
+$font-stack: KristenITC, sans-serif;
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0 20px 0 20px;
+}
+
+body, input {
+  font-family: $font-stack;
+}
