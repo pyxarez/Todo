@@ -1,0 +1,54 @@
+@import '../../../core/variables';
+
+.Header {
+  display: flex;
+  align-items: center;
+  color: $main-color;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.Header-title {
+  flex-grow: 3;
+}
+
+.Header-check-done {
+  margin-right: 15px;
+
+}
+
+.Header-filter {
+  height: 30px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  outline: none;
+  padding: 0 25px 0 10px;
+
+  &:focus {
+    box-shadow: 0 0 1px 1px $second-color;
+  }
+}
+
+.Header-filter-container {
+  position: relative;
+}
+
+.Header-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border: 1px solid $main-color;
+  border-radius: 5px;
+  height: 15px;
+  width: 100%;
+}
+
+.Header-progress {
+  position: absolute;
+  border-radius: 5px;
+  left: 0px;
+  top: 0;
+  height: 14px;
+  width: 75%;
+  background: $progress-bar-color;
+}
