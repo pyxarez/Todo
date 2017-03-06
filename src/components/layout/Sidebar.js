@@ -8,7 +8,9 @@ export default class Sidebar extends Component {
   render() {
     return (
       <div className="my-sidebar-component">
-        <TextBox placeholder="Enter category title"/>
+        {this.props.isInputRequired 
+          &&  <TextBox placeholder="Enter category title"/>
+        }
         <div className="sidebar">
         {/* Место под категории*/}
         </div>

@@ -1,9 +1,9 @@
+@import '../core/variables';
+
 @font-face {
   font-family: KristenITC;
   src: url("./kristen-itc.TTF");
 }
-
-$font-stack: KristenITC, sans-serif;
 
 *, ::after, ::before {
   box-sizing: border-box;
@@ -24,10 +24,15 @@ body, html {
 
 body, input, button {
   font-family: $font-stack;
+  color: $main-color;
 }
 
 button:hover, input[type="checkbox"]:hover {
   cursor: pointer;
+}
+
+input[type="text"]:focus, input[type="textarea"]:focus {
+  box-shadow: 0 0 1px 1px $second-color;
 }
 
 

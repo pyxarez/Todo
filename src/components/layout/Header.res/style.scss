@@ -3,7 +3,6 @@
 .my-header-component {
   display: flex;
   align-items: center;
-  color: $main-color;
   position: relative;
   margin-bottom: 25px;
   flex-wrap: wrap;
@@ -22,14 +21,10 @@
 
   .filter-input {
     height: 30px;
-    border: 1px solid grey;
+    border: 1px solid $main-color;
     border-radius: 5px;
     outline: none;
     padding: 0 25px 0 10px;
-
-    &:focus {
-      box-shadow: 0 0 1px 1px $second-color;
-    }
   }
 
   .progress-bar {
