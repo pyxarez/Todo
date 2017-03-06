@@ -6,6 +6,7 @@
   color: $main-color;
   position: relative;
   margin-bottom: 25px;
+  flex-wrap: wrap;
 }
 
 .Header-title {
@@ -34,20 +35,14 @@
 }
 
 .Header-progress-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   border: 1px solid $main-color;
   border-radius: 5px;
   height: 15px;
-  width: 100%;
+  flex: 1 0 100%;
 }
 
 .Header-progress {
-  position: absolute;
   border-radius: 5px;
-  left: 0px;
-  top: 0;
   height: 14px;
   width: 75%;
   background: $progress-bar-color;

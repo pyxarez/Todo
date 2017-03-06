@@ -7,10 +7,16 @@ export default class Category extends Component {
     index: 0;
   }
   render() {
+    const buttonStyles = {
+      edit {
+        
+      },
+    }
+
     return (
       <div>
         Category {this.props.index}
-        <Button></Button>
+        <Button styles={}></Button>
         <Button></Button>
       </div>
     );

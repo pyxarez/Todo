@@ -8,4 +8,12 @@ const Button = (props) => {
   return  <button style={styles} className={`Button Button-${type}`}></button>;
 }
 
+Button.defaultProps = {
+  type: 'add',
+  styles: { 
+    top: 0,
+    left: 0
+  }
+}
+
 export default Button;
