@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Header from './Header';
-import Sidebar from './Sidebar';
-import TextBox from '../forms/TextBox';
+import Header from '../components/layout/Header';
+import Sidebar from '../components/layout/Sidebar';
+import TextBox from '../components/forms/TextBox';
 import './App.res/style.css';
 
 function App() {
