@@ -1,0 +1,18 @@
+@import '../../../core/variables';
+
+.my-category-wrapper-component {
+  .categories {
+    margin-left: 30px;
+    transition: all 0.4s ease;
+  }
+
+  .categories_extended {
+    transform: scaleY(1);
+  }
+
+  .categories_hidden {
+    height: 0;
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+}

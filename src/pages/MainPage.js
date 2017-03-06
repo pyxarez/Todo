@@ -10,9 +10,9 @@ function MainPage() {
     <div className="my-main-page-component">
       <Header />
       <div className="main">
-        <Sidebar isInputRequired="true" />
+        <Sidebar inputRequired="true" />
         <div className="todo-wrapper">
-          <TextBox placeholder="Text input with button" />
+          <TextBox placeholder="Add task" />
           <div className="todo-wrapper__todo-list"></div>
         </div>
       </div>

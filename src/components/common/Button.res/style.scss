@@ -2,7 +2,6 @@
   display: block;
   background-color: white;
   border-radius: 3px;
-  position: absolute;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 14px 14px;
@@ -17,23 +16,26 @@
   }
 }
 
-.button-add {  
+.button-add {
   background-image: url('./add.svg');
 }
 
-.button-delete {  
+.button-delete {
   background-image: url('./delete.svg');
 }
 
-.button-edit {  
+.button-edit {
   background-image: url('./edit.svg');
 }
 
-.button-clear {  
+.button-clear {
   background-image: url('./clear.svg');
 }
 
-.button-swap{  
+.button-swap {
   background-image: url('./swap.svg');
 }
 
+.button-extend {
+  background-image: url('./extend.svg');
+}
