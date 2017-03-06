@@ -8,7 +8,10 @@ export default class Sidebar extends Component {
   render() {
     return (
       <div className="Sidebar">
-        <TextBox />
+        <TextBox placeholder="Enter category title"/>
+        <div className="Sidebar-list">
+        {/* Место под категории*/}
+        </div>
       </div>
     );
   }

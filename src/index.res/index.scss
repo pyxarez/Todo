@@ -14,6 +14,14 @@ body {
   padding: 0 20px 0 20px;
 }
 
+body, html {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
 body, input, button {
   font-family: $font-stack;
 }
@@ -21,3 +29,5 @@ body, input, button {
 button:hover, input[type="checkbox"]:hover {
   cursor: pointer;
 }
+
+
