@@ -3,21 +3,21 @@ import React from 'react';
 import Header from '../components/layout/Header';
 import Sidebar from '../components/layout/Sidebar';
 import TextBox from '../components/forms/TextBox';
-import './App.res/style.css';
+import './MainPage.res/style.css';
 
-function App() {
+function MainPage() {
   return (
-    <div className="App">
+    <div className="my-main-page-component">
       <Header />
-      <div className="App-main">
+      <div className="main">
         <Sidebar />
-        <div className="Todo-container">
+        <div className="todo-wrapper">
           <TextBox placeholder="Text input with button"/>
-          <div className="Todos"></div>
+          <div className="todo-wrapper__todo-list"></div>
         </div>
       </div>
     </div>
   )
 }
 
-export default App;
+export default MainPage;

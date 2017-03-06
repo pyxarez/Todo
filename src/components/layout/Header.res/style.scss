@@ -1,49 +1,53 @@
 @import '../../../core/variables';
 
-.Header {
+.my-header-component {
   display: flex;
   align-items: center;
   color: $main-color;
   position: relative;
   margin-bottom: 25px;
   flex-wrap: wrap;
-}
 
-.Header-title {
-  flex-grow: 3;
-}
-
-.Header-check-done {
-  margin-right: 15px;
-
-}
-
-.Header-filter {
-  height: 30px;
-  border: 1px solid grey;
-  border-radius: 5px;
-  outline: none;
-  padding: 0 25px 0 10px;
-
-  &:focus {
-    box-shadow: 0 0 1px 1px $second-color;
+  .title {
+    flex-grow: 3;
   }
-}
 
-.Header-filter-container {
-  position: relative;
-}
+  .checkbox {
+    margin-right: 15px;
+  }
 
-.Header-progress-bar {
-  border: 1px solid $main-color;
-  border-radius: 5px;
-  height: 15px;
-  flex: 1 0 100%;
-}
+  .filter {
+    position: relative;
+  }
 
-.Header-progress {
-  border-radius: 5px;
-  height: 13px;
-  width: 75%;
-  background: $progress-bar-color;
+  .filter-input {
+    height: 30px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    outline: none;
+    padding: 0 25px 0 10px;
+
+    &:focus {
+      box-shadow: 0 0 1px 1px $second-color;
+    }
+  }
+
+  .progress-bar {
+    border: 1px solid $main-color;
+    border-radius: 5px;
+    height: 15px;
+    flex: 1 0 100%;
+  }
+
+  .progress-bar__state {
+    border-radius: 5px;
+    height: 13px;
+    width: 75%;
+    background: $progress-bar-color;
+  }
+
+  .my-button-component {
+    top: 5px;
+    right: 5px;
+  }
 }

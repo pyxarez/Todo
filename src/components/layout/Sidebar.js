@@ -7,9 +7,9 @@ import './Sidebar.res/style.css';
 export default class Sidebar extends Component {
   render() {
     return (
-      <div className="Sidebar">
+      <div className="my-sidebar-component">
         <TextBox placeholder="Enter category title"/>
-        <div className="Sidebar-list">
+        <div className="sidebar">
         {/* Место под категории*/}
         </div>
       </div>

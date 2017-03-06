@@ -3,17 +3,9 @@ import React from 'react';
 import './Button.res/style.css'
 
 const Button = (props) => {
-  const {type, styles} = props;
+  const type = props.type;
   
-  return  <button style={styles} className={`Button Button-${type}`}></button>;
-}
-
-Button.defaultProps = {
-  type: 'add',
-  styles: { 
-    top: 0,
-    left: 0
-  }
+  return  <button className={`my-button-component button-${type}`}></button>;
 }
 
 export default Button;

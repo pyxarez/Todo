@@ -7,8 +7,8 @@ export default class TextBox extends Component {
     const placeholder = this.props.placeholder;
     
     return (
-      <div className="Textbox">
-        <input className="Textbox-input" type="text" placeholder={placeholder}/>
+      <div className="my-textbox-component">
+        <input className="textbox-input" type="text" placeholder={placeholder}/>
         <button>Add</button>
       </div>
     );

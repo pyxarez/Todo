@@ -1,4 +1,4 @@
-.Button {
+.my-button-component {
   display: block;
   background-color: white;
   border-radius: 3px;
@@ -17,22 +17,22 @@
   }
 }
 
-.Button-add {  
+.button-add {  
   background-image: url('./add.svg');
 }
 
-.Button-delete {  
+.button-delete {  
   background-image: url('./delete.svg');
 }
 
-.Button-edit {  
+.button-edit {  
   background-image: url('./edit.svg');
 }
 
-.Button-clear {  
+.button-clear {  
   background-image: url('./clear.svg');
 }
 
-.Button-swap{  
+.button-swap{  
   background-image: url('./swap.svg');
 }

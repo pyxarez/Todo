@@ -1,10 +1,11 @@
-.Sidebar {
+.my-sidebar-component {
   flex: 1;
   display: flex;
   flex-direction: column;
+
+  .sidebar {
+    flex: 1;
+    overflow-y: scroll;
+  }
 }
 
-.Sidebar-list {
-  flex: 1;
-  overflow-y: scroll;
-}
