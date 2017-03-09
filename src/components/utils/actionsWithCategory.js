@@ -8,9 +8,8 @@ const deleteCategory = (categories, index) => {
   if (confirm("Are you sure about this?")) categories.splice(index, 1);
 }
 
-const addCategory = (categories) => {
+const addNestedCategory = (categories) => {
   const title = prompt("Enter name", "Some category");
-  console.log(title);
   if (!title) return;
 
   const categoryTemplate = {
@@ -18,34 +17,60 @@ const addCategory = (categories) => {
     nested: [],
     tasks: []
   };
-    console.log(categoryTemplate);
+
   categories.unshift(categoryTemplate);
 }
 
-const editCategory = (categories, { target, action }) => {
-  categories.forEach((category, index) => {
-    const title = category.title;
-    const nested = category.nested;
+const addTask = (taskList, title) => {
+  const taskTemplate = {
+    title,
+    isDone: false,
+    description: ""
+  };
+
+  taskList.unshift(taskTemplate);
+}
+
+const manipulateTree = (categories, { target, action, taskName }) => {
+  for (let i = 0; i < categories.length; i++) {
+    const {
+      title,
+      nested,
+      tasks
+    } = categories[i];
 
     if (title === target) {
       switch (true) {
         case (action === "edit") :
-        changeName(category);
-        break;
+          changeName(categories[i]);
+          break;
 
         case (action === "delete") :
-        deleteCategory(categories, index);
-        break;
+          deleteCategory(categories, i);
+          break;
 
         case (action === "add") :
-        addCategory(nested);
-        break;
+          addNestedCategory(nested);
+          break;
+
+        case (action === "addTask") :
+          addTask(tasks, taskName);
+          break;
+
+        case (action === "getTaskList") :
+          return tasks;
+
+        default : throw new Error("Enter 'action' argument");
       }
       return;
-    } else if (category.nested.length > 0) {
-      editCategory(nested, { target, action });
+    } else if (categories[i].nested.length > 0) {
+      let result = manipulateTree(nested, { target, action, taskName });
+      if (action === "getTaskList" && result) {
+        return result;
+      }
     }
-  });
+  }
+
 }
 
-export default editCategory;
+export default manipulateTree;

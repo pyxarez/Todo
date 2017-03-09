@@ -13,19 +13,8 @@
     flex: 1;
   }
 
-  .todo-wrapper {
+  .my-tasklist-component {
     flex: 2;
-    display: flex;
-    flex-direction: column;
-
-    .my-textbox-component {
-      margin-left: auto;
-    }
-  }
-
-  .todo-wrapper__todo-list {
-    flex: 1;
-    overflow-y: scroll;
   }
 }
 

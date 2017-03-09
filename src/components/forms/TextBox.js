@@ -3,15 +3,10 @@ import React, { Component } from 'react';
 import './TextBox.res/style.css';
 
 export default class TextBox extends Component {
-  state = { value: '' }
-
-  handleChange = (e) => {
-    this.setState({ value: e.target.value });
-  }
-
   handleClick = (e) => {
     e.preventDefault();
-    this.props.onClick({ target: this.state.value });
+    const value = this.refs.categoryInput.value;
+    this.props.onClick(value);
   }
 
   render() {
@@ -20,10 +15,9 @@ export default class TextBox extends Component {
     return (
       <div className="my-textbox-component">
         <input 
-          onChange={this.handleChange}
+          ref="categoryInput"
           className="textbox-input"
           type="text"
-          required
           placeholder={placeholder}/>
         <button onClick={this.handleClick}>Add</button>
       </div>

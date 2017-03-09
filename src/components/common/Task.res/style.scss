@@ -1,0 +1,8 @@
+.my-task-component {
+  display: flex;
+  justify-content: space-between;
+
+  .task-element, .my-button-component  {
+    align-self: center;
+  }
+}
