@@ -7,50 +7,33 @@ export default class CategoryWrapper extends Component {
   state = { extended: false }
 
   handleExtendClick = () => {
-    this.setState({ extended: !this.state.extended});
+    const extended = this.state.extended;
+    this.setState({ extended: !extended});
   }
 
   render() {
-    const {
-      members,
-      onDeleteClick,
-      handleEditCategoryClick,
-      handleAddNestedClick
-    }= this.props;
     const extended = this.state.extended;
+    const {
+      children,
+      title,
+      onClick
+    } = this.props;
 
-    const extendArray = (categories) => {
-      let extended = [];
-
-      for (var i = 1; i < categories.length; i++) {
-       extended.push(<Category
-                      key={i}
-                      onDeleteClick={onDeleteClick}
-                      mayAddNested={false}
-                      handleEditCategoryClick={handleEditCategoryClick}
-                      handleAddNestedClick={handleAddNestedClick}
-                      title={categories[i]}
-                      />)
-      }
-
-      return extended;
+    const getChildrenCount = (children) => {
+      return React.Children.toArray(children).length;
     }
 
     return (
       <div className="my-category-wrapper-component">
         <Category 
-          mayExtends={members.length > 1 ? true : false}
-          mayAddNested={true}
+          mayExtends={getChildrenCount(children) > 0 ? true : false}
           onExtendClick={this.handleExtendClick}
-          onDeleteClick={onDeleteClick}
-          handleEditCategoryClick={handleEditCategoryClick}
-          handleAddNestedClick={handleAddNestedClick}
-          title={members[0]}
-          />
-        {members.length > 1
-         && <div className={extended ? "categories categories_extended" : "categories categories_hidden"}>
-               {extendArray(members)}
-            </div>}
+          onClick={onClick}
+          title={title}/>
+        {children && 
+          <div className={extended 
+            ? "categories categories_extended" 
+            : "categories categories_hidden"}>{children}</div>}
       </div>
     );
   }

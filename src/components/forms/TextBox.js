@@ -11,7 +11,7 @@ export default class TextBox extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    this.props.onClick(this.state.value);
+    this.props.onClick({ target: this.state.value });
   }
 
   render() {

@@ -9,6 +9,7 @@ import './index.res/index.css';
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={MainPage} />
+    <Route path="/:category" component={MainPage} />
     <Route path="/edit" component={EditPage} />
     <Route path="*" component={MainPage} />
   </Router>

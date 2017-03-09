@@ -1,87 +1,99 @@
 import React, { Component } from 'react';
 
 import TextBox from '../forms/TextBox';
+import editCategory from '../utils/actionsWithCategory';
 import CategoryWrapper from '../common/CategoryWrapper';
-import findCategory from '../utils/findCategory';
 import './Sidebar.res/style.css';
 
 export default class Sidebar extends Component {
-  state = { 
-    store: [
-      ["Category"],
-      ["Films", "PornFilms", "MultFilms"],
-      ["College"]
+  state = {
+    stash: [
+      {
+        title: "Category",
+        nested: [],
+        tasks: []
+      },
+      {
+        title: "Films",
+        nested: [
+          {
+            title: "PornFilms",
+            nested: [],
+            tasks: []
+          },
+          {
+            title: "MultFilms",
+            nested: [
+              {
+                title: "Favorite",
+                nested: [],
+                tasks: []
+              }
+            ],
+            tasks: []
+          }
+        ],
+        tasks: []
+      },
+      {
+        title: "College",
+        nested: [],
+        tasks: []
+      }
     ]
-   }
-
-  handleAddClick = (prop) => {
-    const store = this.state.store;
-
-    this.setState({store: [[prop], ...store]})
   }
 
-  handleDeleteClick = (category) => {
-    let answer = confirm('Do you really want to delete this category?');
-    if (!answer) return;
-
-    const store = this.state.store;
-    let newStore = [...store];
-
-    const [i, j] = findCategory(newStore, category);
-    if (j === 0) newStore.splice(i, 1);
-    else newStore[i].splice(j, 1);
-
-    this.setState({store: newStore});
+  handleActionWithCategoryClick = ( options ) => {
+    const stash = [...this.state.stash];
+    editCategory(stash, options);
+    this.setState({stash});
   }
 
-  handleEditCategoryClick = (category) => {
-    const store = this.state.store;
-    let newStore = [...store];
-
-    const newName = prompt('Enter new name', category);
-    if (!newName) return;
-
-    const [i, j] = findCategory(newStore, category);
-    newStore[i][j] = newName;
-
-    this.setState({store: newStore});
-  }
-
-  handleAddNestedClick = (category) => {
-    const store = this.state.store;
-    let newStore = [...store];
-
-    const [i] = findCategory(store, category);
-    const newName = prompt('Enter name', category);
-
-    newStore[i].push(newName);
-
-    this.setState({store: newStore});
+  handleAddCategoryClick = ({ target:title }) => {
+    const stash = [...this.state.stash];
+    const categoryTemplate = {
+      title,
+      nested: [],
+      tasks: []
+    };
+    
+    stash.unshift(categoryTemplate);
+    this.setState({stash});
   }
 
   render() {
-    const createCategories = () => {
-      const categories = this.state.store.map((category, index) => 
-        <CategoryWrapper
-          key={index}
-          members={category}
-          onDeleteClick={this.handleDeleteClick}
-          handleEditCategoryClick={this.handleEditCategoryClick}
-          handleAddNestedClick={this.handleAddNestedClick}
-          />);
+    const categories = this.state.stash;
+    const counter = 0;
 
-      return categories;
+    const createCategories = (categories) => {
+      const tree = categories.map((category, index) => {
+        const {
+          title,
+          nested
+        } = category;
+
+        return (
+          <CategoryWrapper
+            key={index}
+            id={counter}
+            title={title}
+            onClick={this.handleActionWithCategoryClick}>
+            {nested.length > 0 && createCategories(nested)}
+          </CategoryWrapper>);
+      });
+
+      return tree;
     }
 
     return (
       <div className="my-sidebar-component">
         {this.props.inputRequired 
           &&  <TextBox 
-                onClick={this.handleAddClick}
+                onClick={this.handleAddCategoryClick}
                 placeholder="Enter category title"/>
           }
         <div className="sidebar">
-          {createCategories()}
+          { createCategories(categories) }
         </div>
       </div>
     );

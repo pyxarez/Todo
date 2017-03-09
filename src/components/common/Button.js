@@ -7,13 +7,19 @@ const Button = (props) => {
     type,
     onClick,
     categoryName
-    } = props;
+  } = props;
 
   const handleIncomingEvent = () => {
-    onClick(categoryName);
+    const options = {
+      target: categoryName,
+      action: type
+    }
+    onClick(options);
   }
   
-  return  <button className={`my-button-component button-${type}`} onClick={handleIncomingEvent}></button>;
+  return  (<button 
+            className={`my-button-component button-${type}`}
+            onClick={handleIncomingEvent}></button>);
 }
 
 export default Button;

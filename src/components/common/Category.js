@@ -7,40 +7,31 @@ import './Category.res/style.css';
 export default class Category extends Component {
   state = { extended: true }
 
-  static defaultProps = {
-    title: "Category",
-    extends: false
-  }
-
   render() {
     const {
       title,
       mayExtends,
       onExtendClick,
-      onDeleteClick,
-      handleEditCategoryClick,
-      handleAddNestedClick,
-      mayAddNested
-      } = this.props;
+      onClick
+    } = this.props;
 
     return (
       <div className="my-category-component">
-        {mayExtends && <Button type="extend" onClick={onExtendClick}/>}
-        
-        <Link to={`/${title}`} >{title}</Link>
-        <Button type="edit"
+        {mayExtends &&
+          <Button type="extend" onClick={onExtendClick}/>}
+        <Link to={`/${title}`}>{title}</Link>
+        <Button
+          type="edit"
           categoryName={title}
-          onClick={handleEditCategoryClick}
-          />
-        <Button type="delete"
-          categoryName={title}
-          onClick={onDeleteClick}
-          />
-        {mayAddNested && <Button type="add"
-                            categoryName={title}
-                            onClick={handleAddNestedClick}
-                            />}
-
+          onClick={onClick}/>
+        <Button
+          type="delete"
+          onClick={onClick}
+          categoryName={title}/>
+        <Button
+          onClick={onClick}
+          type="add"
+          categoryName={title}/>
       </div>
     );
   }
