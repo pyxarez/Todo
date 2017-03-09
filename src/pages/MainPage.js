@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Header from '../components/layout/Header';
 import Sidebar from '../components/layout/Sidebar';
 import Tasks from '../components/layout/Tasks';
-import manipulateTree from '../components/utils/actionsWithCategory';
+import manipulateTree from '../components/utils/manipulateObjectTree';
 import './MainPage.res/style.css';
 
 export default class MainPage extends Component {
@@ -75,10 +75,15 @@ export default class MainPage extends Component {
 
   render() {
     const categories = this.state.stash;
+    const {
+      category,
+      filter
+    } = this.props.params;
 
     return (
       <div className="my-main-page-component">
-        <Header />
+        <Header
+          currentCategory={this.props.params.category}/>
         <div className="main">
           <Sidebar
             inputRequired="true"
@@ -87,7 +92,8 @@ export default class MainPage extends Component {
             categories={categories}/>
           <Tasks
             categories={categories}
-            currentCategory={this.props.params.category}
+            keyWord={filter}
+            currentCategory={category}
             newTask={this.handleActionWithCategoryClick}/>
         </div>
       </div>

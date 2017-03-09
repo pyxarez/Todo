@@ -19,7 +19,7 @@ export default class Category extends Component {
       <div className="my-category-component">
         {mayExtends &&
           <Button type="extend" onClick={onExtendClick}/>}
-        <Link to={`/${title}`}>{title}</Link>
+        <Link to={`/${title}/ `}>{title}</Link>
         <Button
           type="edit"
           categoryName={title}
