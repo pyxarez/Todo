@@ -5,16 +5,27 @@ import CategoryWrapper from '../common/CategoryWrapper';
 import './Sidebar.res/style.css';
 
 export default class Sidebar extends Component {
+  static propTypes = {
+    inputRequired: React.PropTypes.bool,
+    changeGlobalStorage: React.PropTypes.func.isRequired,
+    globalStorage: React.PropTypes.object.isRequired
+  }
+   
+  handleAddCategoryClick = (title) => {
+    const globalStorage = this.props.globalStorage;
+    globalStorage.addNewCategory(title);
+    this.props.changeGlobalStorage({ globalStorage });
+  }
+
   render() {
     const {
-      categories,
       inputRequired,
-      newCategory,
-      editExistingCategory
+      changeGlobalStorage,
+      globalStorage
     } = this.props;
 
-    const createCategories = (categories) => {
-      const tree = categories.map((category, index) => {
+    const createCategories = (storage) => {
+      const tree = storage.map((category, index) => {
         const {
           title,
           nested
@@ -24,7 +35,8 @@ export default class Sidebar extends Component {
           <CategoryWrapper
             key={index}
             title={title}
-            onClick={editExistingCategory}>
+            changeGlobalStorage={changeGlobalStorage}
+            globalStorage={globalStorage}>
             {nested.length > 0 && createCategories(nested)}
           </CategoryWrapper>);
       });
@@ -35,12 +47,13 @@ export default class Sidebar extends Component {
     return (
       <div className="my-sidebar-component">
         {inputRequired 
-          &&  <TextBox 
-                onClick={newCategory}
+          &&  <TextBox
+                isFocused={true}
+                onClick={this.handleAddCategoryClick}
                 placeholder="Enter category title"/>
           }
         <div className="sidebar">
-          { createCategories(categories) }
+          { createCategories(globalStorage.storage) }
         </div>
       </div>
     );

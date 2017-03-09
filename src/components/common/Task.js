@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Button from './Button';
 import './Task.res/style.css';
 
-export default class Task extends Component {
-  render() {
-    const {
-      title
-      } = this.props;
-    return (
-      <div className="my-task-component">
-        <input  className="task-element" type="checkbox"/>
-        <h2 className="task-element" >{title}</h2>
-        <Button className="task-element" type="edit"/>
-      </div>
-    );
-  }
+Task.propTypes = {
+  title: React.PropTypes.string.isRequired
+};
+
+export default function Task(props) {
+  const title = props.title;
+
+  return (
+    <div className="my-task-component">
+      <input type="checkbox"/>
+      <h2 >{title}</h2>
+      <Button type="edit"/>
+    </div>
+  );
 }
+

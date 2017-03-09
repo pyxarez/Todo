@@ -3,19 +3,38 @@ import React, { Component } from 'react';
 import './TextBox.res/style.css';
 
 export default class TextBox extends Component {
+  static propTypes = {
+    isFocused: React.PropTypes.bool,
+    onClick: React.PropTypes.func.isRequired,
+    placeholder: React.PropTypes.string
+  }
+  
+  static defaultProps = {
+    isFocused: false
+  }
+
   handleClick = (e) => {
-    e.preventDefault();
-    const value = this.refs.categoryInput.value;
+    const value = this.textInput.value;
+    this.textInput.value = "";
     this.props.onClick(value);
   }
 
+  handleKeyPress = (e) => {
+    if (e.key === "Enter") this.handleClick(e);
+  }
+
   render() {
-    const placeholder = this.props.placeholder;
+    const {
+      isFocused,
+      placeholder
+    }= this.props;
 
     return (
       <div className="my-textbox-component">
-        <input 
-          ref="categoryInput"
+        <input
+          autoFocus={isFocused}
+          onKeyPress={this.handleKeyPress}
+          ref={(input) => { this.textInput = input }}
           className="textbox-input"
           type="text"
           placeholder={placeholder}/>
