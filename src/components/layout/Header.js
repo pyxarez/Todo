@@ -12,20 +12,27 @@ export default class Header extends Component {
   handleClearClick = () => {
     this.textInput.value = "";
 
-    const currentCategory = this.props.currentCategory;
-    const path = `/${currentCategory}/`;
+    const {
+      id,
+      currentCategory
+    } = this.props;
+    const path = `/${id}/${currentCategory}/`;
 
     browserHistory.push(path);
   }
 
   handleInputUpdate = (e) => {
-    const currentCategory = this.props.currentCategory;
-    const path = `/${currentCategory}/${e.target.value}`;
+    const {
+      id,
+      currentCategory
+    } = this.props;
+    const path = `/${id}/${currentCategory}/${e.target.value}`;
 
     browserHistory.push(path);
   }
 
   render() {
+    const progress = this.props.progress;
 
     return (
       <div className="my-header-component">
@@ -41,7 +48,7 @@ export default class Header extends Component {
           <Button onClick={this.handleClearClick} type="clear"/>
         </div>
         <div className="progress-bar">
-          <div className="progress-bar__state"></div>
+          <div style={ progress && {width: progress}} className="progress-bar__state"></div>
         </div>
       </div>
     );

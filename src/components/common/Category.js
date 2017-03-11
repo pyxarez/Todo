@@ -17,39 +17,40 @@ export default class Category extends Component {
 
   handleEditCategoryClick = () => {
     const {
-      title,
+      id,
       globalStorage,
       changeGlobalStorage
     } = this.props;
 
-    globalStorage.editCategory(title);
+    globalStorage.editCategory(id);
     changeGlobalStorage({ globalStorage });
   }
 
   handleAddNestedCategoryClick = () => {
     const {
-      title,
+      id,
       globalStorage,
       changeGlobalStorage
     } = this.props;
 
-    globalStorage.addNestedCategory(title);
+    globalStorage.addNestedCategory(id);
     changeGlobalStorage({ globalStorage });
   }
 
   handleDeleteCategoryClick = () => {
     const {
-      title,
+      id,
       globalStorage,
       changeGlobalStorage
     } = this.props;
 
-    globalStorage.deleteCategory(title);
+    globalStorage.deleteCategory(id);
     changeGlobalStorage({ globalStorage });
   }
 
   render() {
     const {
+      id,
       title,
       mayExtends,
       handleExtendClick
@@ -59,7 +60,7 @@ export default class Category extends Component {
       <div className="my-category-component">
         {mayExtends &&
           <Button type="extend" onClick={handleExtendClick}/>}
-        <Link to={`/${title}/`}>{title}</Link>
+        <Link to={`/${id}/${title}/`}>{title}</Link>
         <Button
           type="edit"
           categoryName={title}

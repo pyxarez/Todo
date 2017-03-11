@@ -7,7 +7,7 @@ import './Tasks.res/style.css';
 export default class Tasks extends Component {
   static propTypes = {
     keyWord: React.PropTypes.string,
-    currentCategory: React.PropTypes.string,
+    id: React.PropTypes.string,
     changeGlobalStorage: React.PropTypes.func.isRequired,
     globalStorage: React.PropTypes.object.isRequired
   }
@@ -16,37 +16,49 @@ export default class Tasks extends Component {
     keyWord: ""
   }
 
-  handleAddNewTaskClick = (taskName) => {
+  handleAddNewTaskClick = (title) => {
     const {
+      id,
       globalStorage,
-      currentCategory,
       changeGlobalStorage
     } = this.props;
 
-    globalStorage.addTask(currentCategory, taskName);
+    globalStorage.addTask(id, title);
     changeGlobalStorage({ globalStorage });
+  }
+
+  handleDoneTaskClick = (targetTask) => {
+    const {
+      taskList,
+      globalStorage,
+      changeGlobalStorage
+    } = this.props;
+
+    taskList.find(task => task.id === targetTask)
+            .toggleDone();
+
+    changeGlobalStorage({globalStorage});
   }
 
   createTasks = () => {
     const {
       keyWord,
-      currentCategory,
-      globalStorage
+      taskList
     } = this.props;
 
-   const taskList = globalStorage.getTasks(currentCategory);
-   if (!taskList) return;
-
-    if (taskList) {
-      return taskList
+    return taskList
               .filter((task) => task.title.toLowerCase().includes(keyWord.toLowerCase().trim()))
-              .map((task, index) => <Task key={index} title={task.title} />);
-    }
+              .map((task, index) => {
+                return (
+                  <Task key={index} handleDoneTaskClick={this.handleDoneTaskClick} id={task.id} isDone={task.isDone}>
+                    {task.title}
+                  </Task>);
+              });
   }
 
   render() {
     const {
-      currentCategory
+      taskList
     } = this.props;
 
     return (
@@ -55,7 +67,7 @@ export default class Tasks extends Component {
           placeholder="Enter task title"
           onClick={this.handleAddNewTaskClick}/>
         <div className="todo-wrapper__task-list">
-          {currentCategory && this.createTasks()}
+          {(taskList && taskList.length > 0) && this.createTasks()}
         </div>
       </div>
     );

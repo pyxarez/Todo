@@ -25,6 +25,7 @@ export default class CategoryWrapper extends Component {
   render() {
     const extended = this.state.extended;
     const {
+      id,
       title,
       changeGlobalStorage,
       globalStorage,
@@ -34,6 +35,7 @@ export default class CategoryWrapper extends Component {
     return (
       <div className="my-category-wrapper-component">
         <Category
+          id={id}
           title={title}
           mayExtends={this.getChildrenCount(children) > 0 ? true : false}
           changeGlobalStorage={changeGlobalStorage}

@@ -14,15 +14,21 @@ export default class MainPage extends Component {
   }
 
   render() {
-    console.log(this.state);
     const {
+      id,
       category,
       filter
     } = this.props.params;
+    const globalStorage = this.state.globalStorage;
+    const taskList = globalStorage.getTasks(id);
+    const progress = globalStorage.getProgress();
+    console.log(progress);
 
     return (
       <div className="my-main-page-component">
         <Header
+          id={id}
+          progress={progress}
           currentCategory={category}/>
         <div className="main">
           <Sidebar
@@ -31,7 +37,8 @@ export default class MainPage extends Component {
             globalStorage={this.state.globalStorage}/>
           <Tasks
             keyWord={filter}
-            currentCategory={category}
+            id={id}
+            taskList={taskList}
             changeGlobalStorage={this.setState.bind(this)}
             globalStorage={this.state.globalStorage}/>
         </div>

@@ -27,6 +27,7 @@ export default class Sidebar extends Component {
     const createCategories = (storage) => {
       const tree = storage.map((category, index) => {
         const {
+          id,
           title,
           nested
         } = category;
@@ -34,6 +35,7 @@ export default class Sidebar extends Component {
         return (
           <CategoryWrapper
             key={index}
+            id={id}
             title={title}
             changeGlobalStorage={changeGlobalStorage}
             globalStorage={globalStorage}>
