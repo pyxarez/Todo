@@ -21,13 +21,12 @@ export default class MainPage extends Component {
     } = this.props.params;
     const globalStorage = this.state.globalStorage;
     const taskList = globalStorage.getTasks(id);
-    const progress = globalStorage.getProgress();
 
     return (
       <div className="my-main-page-component">
         <Header
           id={id}
-          progress={progress}
+          globalStorage={globalStorage}
           currentCategory={category}/>
         <div className="main">
           <Sidebar

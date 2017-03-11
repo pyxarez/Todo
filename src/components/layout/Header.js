@@ -32,7 +32,7 @@ export default class Header extends Component {
   }
 
   render() {
-    const progress = this.props.progress;
+    const progress = this.props.globalStorage.getProgress();;
 
     return (
       <div className="my-header-component">

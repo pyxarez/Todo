@@ -102,15 +102,16 @@ export default class DataStorage {
     for (var i = 0; i < storage.length; i++) {
       const storageElem = storage[i];
       if (storageElem.id === +target) {
-        const returningValue = {
+        const returningBundle = {
           category: storageElem,
           storage,
           index: i
         }
-        return returningValue;
+        return returningBundle;
       }
       else if (storageElem.nested.length > 0) {
-        return this.findTarget(target, storageElem.nested);
+        const returningBundle = this.findTarget(target, storageElem.nested);
+        if (Object.keys(returningBundle).length === 3) return returningBundle;
       }
     }
 
