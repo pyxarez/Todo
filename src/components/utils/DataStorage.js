@@ -82,21 +82,19 @@ export default class DataStorage {
   }
 
   _countDone(storage=this.storage) {
-    console.log(storage);
     storage.forEach((category) => {
       category.tasks.forEach((task) => {
         this.progress.increaseTotal();
         if (task.isDone) this.progress.increaseDone();
       })
 
-      if (category.nested.length > 0) this.countDone(category.nested);
+      if (category.nested.length > 0) this._countDone(category.nested);
     })
   }
 
   getProgress() {
     this.progress.resetData();
     this._countDone();
-    console.log(this.progress.done, this.progress.total);
     return this.progress.getProgress();
   }
 

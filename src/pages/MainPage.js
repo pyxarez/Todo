@@ -22,7 +22,6 @@ export default class MainPage extends Component {
     const globalStorage = this.state.globalStorage;
     const taskList = globalStorage.getTasks(id);
     const progress = globalStorage.getProgress();
-    console.log(progress);
 
     return (
       <div className="my-main-page-component">
