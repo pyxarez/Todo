@@ -7,10 +7,17 @@ import DataStorage from '../components/utils/DataStorage';
 import './MainPage.res/style.css';
 
 export default class MainPage extends Component {
-  state = { globalStorage: DataStorage.of() }
+  state = {
+    globalStorage: DataStorage.of(),
+    filterByDone: false
+  }
 
   static propTypes = {
     params: React.PropTypes.object.isRequired
+  }
+
+  handleShowDoneClick = () => {
+    this.setState({ filterByDone: !this.state.filterByDone });
   }
 
   render() {
@@ -20,25 +27,27 @@ export default class MainPage extends Component {
       filter
     } = this.props.params;
     const globalStorage = this.state.globalStorage;
-    const taskList = globalStorage.getTasks(id);
+    const filterByDone = this.state.filterByDone;
 
     return (
       <div className="my-main-page-component">
         <Header
           id={id}
+          filterByDone={filterByDone}
+          handleShowDoneClick={this.handleShowDoneClick}
           globalStorage={globalStorage}
           currentCategory={category}/>
         <div className="main">
           <Sidebar
             inputRequired={true}
             changeGlobalStorage={this.setState.bind(this)}
-            globalStorage={this.state.globalStorage}/>
+            globalStorage={globalStorage}/>
           <Tasks
-            keyWord={filter}
             id={id}
-            taskList={taskList}
+            keyWord={filter}
+            filterByDone={filterByDone}
             changeGlobalStorage={this.setState.bind(this)}
-            globalStorage={this.state.globalStorage}/>
+            globalStorage={globalStorage}/>
         </div>
       </div>
     );

@@ -33,11 +33,18 @@ export default class Header extends Component {
 
   render() {
     const progress = this.props.globalStorage.getProgress();;
+    const {
+      handleShowDoneClick,
+      filterByDone
+    } = this.props;
 
     return (
       <div className="my-header-component">
         <h1 className="title">To-Do List</h1>
-        <label className="checkbox"><input type="checkbox"/>Show done</label>
+        <label className="checkbox">
+          <input onChange={handleShowDoneClick} checked={filterByDone} type="checkbox"/>
+          Show done
+        </label>
         <div className="filter">
           <input
             ref={(input) => { this.textInput = input }}

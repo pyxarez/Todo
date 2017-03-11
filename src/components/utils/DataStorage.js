@@ -160,7 +160,7 @@ export default class DataStorage {
 
   getTasks(target) {
     const { category } = this.findTarget(target);
-    if (!category) return;
+    if (!category) return [];
     return category.tasks;
   }
 }

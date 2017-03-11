@@ -29,11 +29,12 @@ export default class Tasks extends Component {
 
   handleDoneTaskClick = (targetTask) => {
     const {
-      taskList,
+      id,
       globalStorage,
       changeGlobalStorage
     } = this.props;
 
+    const taskList = globalStorage.getTasks(id);
     taskList.find(task => task.id === targetTask)
             .toggleDone();
 
@@ -42,24 +43,28 @@ export default class Tasks extends Component {
 
   createTasks = () => {
     const {
+      id,
       keyWord,
-      taskList
+      globalStorage,
+      filterByDone
     } = this.props;
 
+    let taskList = globalStorage.getTasks(id);
+    if (taskList.length === 0) return;
+
+    if (filterByDone) taskList = taskList.filter(task => task.isDone);
     return taskList
-              .filter((task) => task.title.toLowerCase().includes(keyWord.toLowerCase().trim()))
-              .map((task, index) => {
-                return (
-                  <Task key={index} handleDoneTaskClick={this.handleDoneTaskClick} id={task.id} isDone={task.isDone}>
-                    {task.title}
-                  </Task>);
-              });
+            .filter((task) => task.title.toLowerCase().includes(keyWord.toLowerCase().trim()))
+            .map((task, index) => {
+              return (
+                <Task key={index} handleDoneTaskClick={this.handleDoneTaskClick} id={task.id} isDone={task.isDone}>
+                  {task.title}
+                </Task>);
+            });
   }
 
   render() {
-    const {
-      taskList
-    } = this.props;
+    const id = this.props.id;
 
     return (
       <div className="my-tasklist-component">
@@ -67,7 +72,7 @@ export default class Tasks extends Component {
           placeholder="Enter task title"
           onClick={this.handleAddNewTaskClick}/>
         <div className="todo-wrapper__task-list">
-          {(taskList && taskList.length > 0) && this.createTasks()}
+          {id && this.createTasks()}
         </div>
       </div>
     );
