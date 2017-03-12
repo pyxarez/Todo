@@ -81,6 +81,10 @@ export default class DataStorage {
     return new DataStorage();
   }
 
+  getCategories() {
+    return this.storage;
+  }
+
   _countDone(storage=this.storage) {
     storage.forEach((category) => {
       category.tasks.forEach((task) => {
@@ -98,7 +102,7 @@ export default class DataStorage {
     return this.progress.getProgress();
   }
 
-  findTarget(target, storage=this.storage) {
+  _findTarget(target, storage=this.storage) {
     for (var i = 0; i < storage.length; i++) {
       const storageElem = storage[i];
       if (storageElem.id === +target) {
@@ -110,7 +114,7 @@ export default class DataStorage {
         return returningBundle;
       }
       else if (storageElem.nested.length > 0) {
-        const returningBundle = this.findTarget(target, storageElem.nested);
+        const returningBundle = this._findTarget(target, storageElem.nested);
         if (Object.keys(returningBundle).length === 3) return returningBundle;
       }
     }
@@ -119,7 +123,7 @@ export default class DataStorage {
   }
 
   editCategory(target) {
-    const { category } = this.findTarget(target);
+    const { category } = this._findTarget(target);
     const newTitle = prompt("Enter new title", category.title);
     if (!newTitle) return;
 
@@ -135,7 +139,7 @@ export default class DataStorage {
   deleteCategory(target) {
     if (!confirm("Are you sure about this?")) return;
 
-    const { storage, index } = this.findTarget(target);
+    const { storage, index } = this._findTarget(target);
     storage.splice(index, 1);
   }
 
@@ -143,13 +147,13 @@ export default class DataStorage {
     const title = prompt("Enter title");
     if (!title) return;
 
-    const { category } = this.findTarget(target);
+    const { category } = this._findTarget(target);
     this.addNewCategory(title, category.nested);
   }
 
   addTask(target, title) {
     const id = taskIdGenerator.getNextId();
-    const { category } = this.findTarget(target);
+    const { category } = this._findTarget(target);
     if (!category) {
       alert("Choose category");
       return;
@@ -159,7 +163,7 @@ export default class DataStorage {
   }
 
   getTasks(target) {
-    const { category } = this.findTarget(target);
+    const { category } = this._findTarget(target);
     if (!category) return [];
     return category.tasks;
   }

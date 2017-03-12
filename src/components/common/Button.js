@@ -4,20 +4,13 @@ import './Button.res/style.css'
 
 Button.propTypes = {
   type: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func,
-  categoryName: React.PropTypes.string
+  onClick: React.PropTypes.func
 }
 
-function Button(props) {
-  const {
-    type,
-    onClick
-  } = props;
-
+export default function Button({type, onClick}) {
   return  (
     <button 
       className={`my-button-component button-${type}`}
-      onClick={onClick} />);
+      onClick={onClick} />
+  );
 }
-
-export default Button;

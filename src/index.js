@@ -6,16 +6,15 @@ import MainPage from './pages/MainPage.js';
 import EditPage from './pages/EditPage.js';
 import './index.res/index.css';
 
-browserHistory.push("/");
-
 ReactDOM.render((
   <Router history={browserHistory}>
-    <Route path="/" component={MainPage} />
-    <Route path="/:id" component={MainPage} />
-    <Route path="/:id/:category" component={MainPage} />
-    <Route path="/:id/:category/:filter" component={MainPage} />
-    <Route path="/edit" component={EditPage} />
-    <Route path="*" component={MainPage} />
+    <Route path="todo" component={MainPage} />
+    <Route path="todo/main" component={MainPage} />
+    <Route path="todo/main/:id" component={MainPage} />
+    <Route path="todo/main/:id/:category" component={MainPage} />
+    <Route path="todo/main/:id/:category/:filter" component={MainPage} />
+    <Route path="todo/edit" component={EditPage} />
+    <Route path="todo/edit/:id" component={EditPage} />
   </Router>
   ),
   document.getElementById('root')

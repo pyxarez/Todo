@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Sidebar from '../components/layout/Sidebar';
+// import Sidebar from '../components/layout/Sidebar';
 import './EditPage.res/style.css';
 
 export default class EditPage extends Component {
@@ -9,7 +9,7 @@ export default class EditPage extends Component {
       <div className="my-edit-page-component">
         <h1>To-Do Item #1</h1>
         <div className="main">
-          <Sidebar />
+          {/* <Sidebar /> */}
           <div className="main__task-edit">
             <div className="buttons-container">
               <button>Save changes</button>

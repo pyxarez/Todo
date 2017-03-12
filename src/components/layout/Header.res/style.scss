@@ -3,47 +3,10 @@
 .my-header-component {
   display: flex;
   align-items: center;
-  position: relative;
   margin-bottom: 25px;
   flex-wrap: wrap;
 
   .title {
     flex-grow: 3;
-  }
-
-  .checkbox {
-    margin-right: 15px;
-  }
-
-  .filter {
-    position: relative;
-  }
-
-  .filter-input {
-    height: 30px;
-    border: 1px solid $main-color;
-    border-radius: 5px;
-    outline: none;
-    padding: 0 25px 0 10px;
-  }
-
-  .progress-bar {
-    border: 1px solid $main-color;
-    border-radius: 5px;
-    height: 15px;
-    flex: 1 0 100%;
-  }
-
-  .progress-bar__state {
-    border-radius: 4px;
-    height: 13px;
-    width: 0;
-    background: $progressbar-color;
-  }
-
-  .my-button-component {
-    position: absolute;
-    top: 5px;
-    right: 5px;
   }
 }
