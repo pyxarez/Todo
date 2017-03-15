@@ -167,4 +167,13 @@ export default class DataStorage {
     if (!category) return [];
     return category.tasks;
   }
+
+  changeTaskLocation(prevLocationId, targetLocationId, taskId) {
+    const { category:prevCategory } = this._findTarget(+prevLocationId);
+    const { category:targetCategory } = this._findTarget(targetLocationId);
+
+    const taskIndex = prevCategory.tasks.findIndex((task) => task.id === +taskId);
+    const changingTask = prevCategory.tasks.splice(taskIndex, 1);
+    targetCategory.tasks.unshift(...changingTask);
+  }
 }

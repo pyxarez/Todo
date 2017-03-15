@@ -8,12 +8,11 @@ import Filter from '../components/common/Filter';
 import MainCategoryContainer from '../components/common/MainCategoryContainer';
 import Progressbar from '../components/common/Progressbar';
 import TextBox from '../components/forms/TextBox';
-import DataStorage from '../components/utils/DataStorage';
 import './MainPage.res/style.css';
 
 export default class MainPage extends Component {
   state = {
-    globalStorage: DataStorage.of(),
+    globalStorage:this.props.route.gs,
     showDone: true
   }
 
@@ -71,27 +70,10 @@ export default class MainPage extends Component {
     this.setState({ globalStorage });
   }
 
-  _renderCategoryList = (categories=this.state.globalStorage.getCategories()) => {
-    return categories.map((category) => {
-      const nestedCategories = category.nested;
-
-      return (
-        <MainCategoryContainer
-          key={category.id}
-          id={category.id}
-          title={category.title}
-          handleEditCategoryClick={this.handleEditCategoryClick}
-          handleAddNestedCategoryClick={this.handleAddNestedCategoryClick}
-          handleDeleteCategoryClick={this.handleDeleteCategoryClick}>
-          {category.nested.length > 0 && this._renderCategoryList(nestedCategories)}
-        </MainCategoryContainer>
-      )
-    });
-}
-
   render() {
     const id = this.props.params.id;
     const showDone = this.state.showDone;
+    const categories = this.state.globalStorage.getCategories();
     const progress = this.state.globalStorage.getProgress();
     const taskList = id ? this.state.globalStorage.getTasks(id) : [];
 
@@ -111,9 +93,12 @@ export default class MainPage extends Component {
               isFocused={true}
               onClick={this.handleAddCategoryClick}
               placeholder="Enter category title"/>
-            <Sidebar>
-              {this._renderCategoryList()}
-            </Sidebar>
+            <Sidebar
+              categories={categories}
+              categoryContainer={MainCategoryContainer}
+              handleEditCategoryClick={this.handleEditCategoryClick}
+              handleAddNestedCategoryClick={this.handleAddNestedCategoryClick}
+              handleDeleteCategoryClick={this.handleDeleteCategoryClick}/>
           </div>
           <TaskListContainer
             URLParams={this.props.params}

@@ -1,26 +1,66 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
-// import Sidebar from '../components/layout/Sidebar';
+import Header from '../components/layout/Header';
+import EditCategoryContainer from '../components/common/EditCategoryContainer';
+import Sidebar from '../components/layout/Sidebar';
+import EditTaskContainer from '../components/layout/EditTaskContainer';
+import NotFound from './NotFound';
 import './EditPage.res/style.css';
 
 export default class EditPage extends Component {
+  state = { 
+    globalStorage:this.props.route.gs,
+    task:this.props.route.gs.getTasks(this.props.params.categoryId).find((task) => task.id === +this.props.params.taskId)
+  }
+
+  handleSwapCategoryClick = (targetLocationId) => {
+    const {
+      categoryId:prevLocationId,
+      taskId
+    } = this.props.params;
+    const globalStorage = this.state.globalStorage;
+
+    globalStorage.changeTaskLocation(prevLocationId, targetLocationId, taskId);
+    browserHistory.push('/todo/main');
+  }
+
+  handleSaveChangesClick = (title, isDone, description) => {
+    const task = this.state.task;
+
+    task.title = title;
+    task.isDone = isDone;
+    task.description = description;
+
+    browserHistory.push('/todo/main');
+  }
+
+  handleCancelClick = () => {
+    browserHistory.push('/todo/main');
+  }
+
   render() {
+    const task = this.state.task;
+    if (!task) return <NotFound onClick={this.handleCancelClick}/>
+
+    const categoryId = +this.props.params.categoryId;
+    const categories = this.state.globalStorage.getCategories();
+
     return (
       <div className="my-edit-page-component">
-        <h1>To-Do Item #1</h1>
+        <Header title={task.title} />
         <div className="main">
-          {/* <Sidebar /> */}
-          <div className="main__task-edit">
-            <div className="buttons-container">
-              <button>Save changes</button>
-              <button>Cancel</button>
-            </div>
-            <form>
-              <input type="text" defaultValue="To-Do Item #1"/>
-              <input type="checkbox"/>
-            </form>
-            <textarea className="description" name="description" cols="30" rows="30"></textarea>
-          </div>
+          <Sidebar
+            categories={categories}
+            categoryContainer={EditCategoryContainer}
+            handleSwapCategoryClick={this.handleSwapCategoryClick}
+            currentCategoryId={categoryId}/>
+          <EditTaskContainer
+            title={task.title}
+            isDone={task.isDone}
+            description={task.description}
+            handleSaveChangesClick={this.handleSaveChangesClick}
+            handleCancelClick={this.handleCancelClick}/>
         </div>
       </div>
     );

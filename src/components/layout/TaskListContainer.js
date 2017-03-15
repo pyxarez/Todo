@@ -33,6 +33,7 @@ export default class TaskListContainer extends Component {
       taskList,
       handleDoneTaskClick
     } = this.props;
+    const categoryId = this.props.URLParams.id;
     const keyWord = this.props.URLParams.filter || "";
 
     const newTaskList = !showDone
@@ -45,6 +46,7 @@ export default class TaskListContainer extends Component {
               return (
                 <TaskContainer
                   key={task.id}
+                  categoryId={categoryId}
                   task={task}
                   handleDoneTaskClick={handleDoneTaskClick}/>
               );

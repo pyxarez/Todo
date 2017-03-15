@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const HOCCategoryContainer = (CategoryContainer) => class extends Component {
+const ShareExtendState = (CategoryContainer) => class extends Component {
   state = { extended: false }
 
   handleExtendClick = () => {
@@ -22,4 +22,4 @@ const HOCCategoryContainer = (CategoryContainer) => class extends Component {
   }
 }
 
-export default HOCCategoryContainer;
+export default ShareExtendState;

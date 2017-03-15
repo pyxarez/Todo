@@ -1,46 +1,65 @@
 import React, { Component } from 'react';
 
-import ButtonContainer from './ButtonContainer';
+import Button from './Button';
 import Category from './Category';
-import HOCCategoryContainer from './HOCCategoryContainer';
-import './CategoryContainer.res/style.css;';
+import ShareExtendState from './ShareExtendState';
+import './CategoryContainer.res/style.css';
 
-Container.propTypes = {
-  id: React.PropTypes.node.isRequired,
-  title: React.PropTypes.string.isRequired,
-  handleSwapCategoryClick: React.PropTypes.func.isRequired,
-  extended: React.PropTypes.bool.isRequired,
-  onExtend: React.PropTypes.func.isRequired,
-  getChildrenCount: React.PropTypes.func.isRequired,
-  children: React.PropTypes.arrayOf(React.PropTypes.element.isRequired)
+class Container extends Component {
+  static propTypes = {
+    id: React.PropTypes.node.isRequired,
+    title: React.PropTypes.string.isRequired,
+    handleSwapCategoryClick: React.PropTypes.func.isRequired,
+    extended: React.PropTypes.bool.isRequired,
+    onExtend: React.PropTypes.func.isRequired,
+    getChildrenCount: React.PropTypes.func.isRequired,
+    currentCategoryId: React.PropTypes.number.isRequired,
+    children: React.PropTypes.oneOfType(
+      [
+        React.PropTypes.arrayOf(React.PropTypes.element.isRequired),
+        React.PropTypes.bool
+      ]).isRequired
+  }
+
+  handleSwapCategoryClick = () => {
+    const {
+      id,
+      handleSwapCategoryClick
+    } = this.props;
+
+    handleSwapCategoryClick(id);
+  }
+
+  render() {
+    const {
+      id,
+      title,
+      extended,
+      onExtend,
+      getChildrenCount,
+      children,
+      currentCategoryId
+    } = this.props;
+
+    console.log(currentCategoryId);
+
+    return (
+      <div className='my-categoryContainer-component'>
+        <Category id={id} title={title} onExtend={ getChildrenCount(children) > 0 && onExtend }>
+          {currentCategoryId !== id && 
+            <Button
+              type="swap"
+              onClick={this.handleSwapCategoryClick}
+              style={{ marginLeft: 'auto' }}/>}
+        </Category>
+        {children && 
+          <div className={extended
+            ? "categories categories_extended"
+            : "categories categories_hidden"}>{children}</div>}
+      </div>
+    );
+  }
 }
 
-function Container(props) {
-  const {
-    id,
-    title,
-    handleSwapCategoryClick,
-    extended,
-    onExtend,
-    getChildrenCount,
-    chidlren
-  } = props;
-
-  return (
-    <div className='my-categoryContainer-component'>
-      <Category id={id} title={title} onExtend={ getChildrenCount(chidlren) > 0 && onExtend }>
-        <ButtonContainer
-          type="swap"
-          categoryId={id}
-          onClick={handleSwapCategoryClick}/>
-      </Category>
-      {children && 
-        <div className={extended
-          ? "categories categories_extended"
-          : "categories categories_hidden"}>{children}</div>}
-    </div>
-  );
-}
-
-const EditCategoryContainer = HOCCategoryContainer(Container);
+const EditCategoryContainer = ShareExtendState(Container);
 export default EditCategoryContainer;
