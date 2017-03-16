@@ -1,0 +1,18 @@
+@import '../../core/variables';
+
+.my-categoryContainer-component {
+  .categories {
+    margin-left: 20px;
+    transition: all 0.4s ease;
+  }
+
+  .categories_extended {
+    transform: scaleY(1);
+  }
+
+  .categories_hidden {
+    height: 0;
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+}
