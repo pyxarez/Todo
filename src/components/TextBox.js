@@ -13,10 +13,10 @@ export default class TextBox extends Component {
     isFocused: false
   }
 
-  handleClick = (e) => {
+  handleClick = () => {
     const value = this.textInput.value;
     if (value.trim() === "") {
-      confirm("Введите название категории");
+      confirm("Type something please");
       return;
     }
     this.textInput.value = "";
@@ -24,7 +24,7 @@ export default class TextBox extends Component {
   }
 
   handleKeyPress = (e) => {
-    if (e.key === "Enter") this.handleClick(e);
+    if (e.key === "Enter") this.handleClick();
   }
 
   render() {

@@ -4,16 +4,20 @@ import {
 
 import * as api from '../api/api';
 
+const gettingProgressSuccess = (progress) => {
+  return {
+    type: GET_PROGRESS,
+    payload: {
+      progress
+    }
+  };
+};
+
 export const getProgress = () => {
   return (dispatch) => {
-    api.getProgress()
+    return api.getProgress()
       .then((progress) => {
-        dispatch({
-          type: GET_PROGRESS,
-          payload: {
-            progress
-          }
-        })
+        dispatch( gettingProgressSuccess(progress) );
       });
   };
 };

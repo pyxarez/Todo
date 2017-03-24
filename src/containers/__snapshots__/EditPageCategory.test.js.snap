@@ -1,0 +1,104 @@
+exports[`containers EditCategoryContainer should call changeTaskLocation 1`] = `
+<div
+  className="my-categoryContainer-component">
+  <Category
+    id={0}
+    onExtend={[Function]}
+    title="Vassa">
+    <Button
+      onClick={[Function]}
+      style={
+        Object {
+          "marginLeft": "auto",
+        }
+      }
+      type="swap" />
+  </Category>
+  <div
+    className="categories categories_extended">
+    <div
+      className="vassa" />
+  </div>
+</div>
+`;
+
+exports[`containers EditCategoryContainer should call changeTaskLocation 2`] = `
+<div
+  className="my-categoryContainer-component">
+  <Category
+    id={0}
+    onExtend={[Function]}
+    title="Vassa">
+    <Button
+      onClick={[Function]}
+      style={
+        Object {
+          "marginLeft": "auto",
+        }
+      }
+      type="swap" />
+  </Category>
+  <div
+    className="categories categories_extended">
+    <div
+      className="vassa" />
+  </div>
+</div>
+`;
+
+exports[`containers EditCategoryContainer should render self and subconmponents       without children and button 1`] = `
+<div
+  className="my-categoryContainer-component">
+  <Category
+    id={0}
+    onExtend={false}
+    title="Vassa" />
+</div>
+`;
+
+exports[`containers EditCategoryContainer should render self and subconmponents     with not extended container 1`] = `
+<div
+  className="my-categoryContainer-component">
+  <Category
+    id={0}
+    onExtend={[Function]}
+    title="Vassa">
+    <Button
+      onClick={[Function]}
+      style={
+        Object {
+          "marginLeft": "auto",
+        }
+      }
+      type="swap" />
+  </Category>
+  <div
+    className="categories categories_hidden">
+    <div />
+  </div>
+</div>
+`;
+
+exports[`containers EditCategoryContainer should render self and subconmponents 1`] = `
+<div
+  className="my-categoryContainer-component">
+  <Category
+    id={0}
+    onExtend={[Function]}
+    title="Vassa">
+    <Button
+      onClick={[Function]}
+      style={
+        Object {
+          "marginLeft": "auto",
+        }
+      }
+      type="swap" />
+  </Category>
+  <div
+    className="categories categories_extended">
+    <div
+      className="vassa" />
+  </div>
+</div>
+`;

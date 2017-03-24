@@ -1,0 +1,14 @@
+exports[`components TaskList should render self 1`] = `
+<div
+  className="my-tasklist-component">
+  <TextBox
+    isFocused={false}
+    onClick={[Function]}
+    placeholder="Enter task title" />
+  <div
+    className="tasklist">
+    <div
+      className="testClass" />
+  </div>
+</div>
+`;

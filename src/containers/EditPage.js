@@ -10,7 +10,7 @@ import Sidebar from './Sidebar';
 
 import './EditPage.res/style.css';
 
-class EditPageContainer extends Component {
+export class EditPageContainer extends Component {
   static propTypes = {
     tasks: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     params: PropTypes.shape({

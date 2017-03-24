@@ -5,7 +5,13 @@ import './EditTask.res/style.css';
 EditTask.propTypes = {
   onSave: React.PropTypes.func.isRequired,
   onCancel: React.PropTypes.func.isRequired,
-  children: React.PropTypes.arrayOf(React.PropTypes.node.isRequired)
+  children: React.PropTypes.oneOfType(
+    [
+      React.PropTypes.arrayOf(React.PropTypes.element),
+      React.PropTypes.bool,
+      React.PropTypes.object
+    ]
+  ),
 }
 
 export default function EditTask({ onSave, onCancel, children }) {

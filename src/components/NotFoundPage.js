@@ -1,11 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 
-NotFound.PropTypes = {
-  onClick: React.PropTypes.func.isRequired,
-}
-
-export default function NotFound({onClick}) {
+export default function NotFound() {
   const goBack = () => {
     browserHistory.push('/main');
   }

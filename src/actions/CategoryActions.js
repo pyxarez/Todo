@@ -9,93 +9,135 @@ import {
 
 import * as api from '../api/api';
 
+const gettingCategoriesSuccess = (categories) => {
+  return {
+    type: GET_CATEGORIES,
+    payload: {
+      categories
+    }
+  };
+};
+
+const addingCategorySuccess = (categoryId, title) => {
+  return {
+    type: ADD_CATEGORY,
+    payload: {
+      categoryId,
+      title
+    }
+  };
+};
+
+const addingNestedCategorySuccess = (parentCategoryId, categoryId, title) => {
+  return {
+    type: ADD_NESTED_CATEGORY,
+    payload: {
+      parentCategoryId,
+      categoryId,
+      title
+    }
+  };
+};
+
+const deletingCategorySuccess = (categoryId) => {
+  return {
+    type: DELETE_CATEGORY,
+    payload: {
+      categoryId
+    }
+  };
+};
+
+const renamingCategorySuccess = (categoryId, title) => {
+  return {
+    type: RENAME_CATEGORY,
+    payload: {
+      categoryId,
+      title
+    }
+  };
+};
+
+const changingTaskLocationSuccess = (prevLocation, newLocation, taskId) => {
+  return {
+    type: CHANGE_TASK_LOCATION,
+    payload: {
+      prevLocation,
+      newLocation,
+      taskId
+    }
+  }
+}
+
 //Not used yet
 export function getCategories() {
   return (dispatch) => {
-    api.getCategories()
+    return api.getCategories()
       .then((categories) => {
-        dispatch({
-          type: GET_CATEGORIES,
-          payload: {
-            categories
-          }
-        });
+        dispatch(gettingCategoriesSuccess(categories));
       });
   };
 };
 
 export function addCategory(title) {
   return (dispatch) => {
-    api.addCategory(title)
-      .then((response) => { 
-        dispatch({
-          type: ADD_CATEGORY,
-          payload: {
-            categoryId: response,
-            title
-          }
-        });
+    return api.addCategory(title)
+      .then((categoryId) => { 
+        dispatch(addingCategorySuccess(categoryId, title));
+
+        return categoryId;
       });
   };
 };
 
 export function addNestedCategory(parentCategoryId, title) {
   return (dispatch) => {
-    api.addNestedCategory(parentCategoryId, title)
-      .then((response) => {
-        dispatch({
-          type: ADD_NESTED_CATEGORY,
-          payload: {
-            parentCategoryId,
-            categoryId: response,
-            title
-          }
-        });
+    return api.addNestedCategory(parentCategoryId, title)
+      .then((nestedCategoryId) => {
+        dispatch(
+          addingNestedCategorySuccess(parentCategoryId, nestedCategoryId, title)
+        );
+
+        return nestedCategoryId;
       });
   };
 };
 
 export function deleteCategory(categoryId) {
   return (dispatch) => {
-    api.deleteCategory(categoryId)
-      .then((response) => {
-        dispatch({
-          type: DELETE_CATEGORY,
-          payload: {
-            categoryId: response
-          }
-        });
+    return api.deleteCategory(categoryId)
+      .then((categoryId) => {
+        dispatch(deletingCategorySuccess(categoryId));
+
+        return categoryId;
       });
   };
 };
 
 export function renameCategory(categoryId, title){
   return (dispatch) => {
-    api.renameCategory(categoryId, title)
-      .then((response) => {
-        dispatch({
-          type: RENAME_CATEGORY,
-          payload: {
-            categoryId: response,
-            title
-          }
-        });
+    return api.renameCategory(categoryId, title)
+      .then(() => {
+        dispatch(renamingCategorySuccess(categoryId, title));
+
+        return categoryId;
       });
   };
 };
 
 export function changeTaskLocation(prevLocation, newLocation, taskId) {
   return (dispatch) => {
-    api.changeTaskLocation(prevLocation, newLocation, taskId)
+    return api.changeTaskLocation(prevLocation, newLocation, taskId)
       .then((response) => {
-        dispatch({
-          type: CHANGE_TASK_LOCATION,
-          payload: {
-            prevLocation,
-            newLocation,
-            taskId
-          }
-        });
+        dispatch(
+          changingTaskLocationSuccess(prevLocation, newLocation, taskId)
+        );
+
+        return {
+          prevLocation,
+          newLocation,
+          taskId
+        }
       });
   };
 };

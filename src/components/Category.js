@@ -17,7 +17,7 @@ Category.propTypes = {
       React.PropTypes.arrayOf(React.PropTypes.element.isRequired),
       React.PropTypes.bool,
       React.PropTypes.object
-    ]).isRequired
+    ])
 }
 
 export default function Category({ id, title, children, onExtend }) {

@@ -15,7 +15,7 @@ import ShareExtendState from './ShareExtendState';
 
 import './CategoryContainer.res/style.css';
 
-class Container extends Component {
+export class Container extends Component {
   static propTypes = {
     id: PropTypes.node.isRequired,
     title: PropTypes.string.isRequired,
@@ -26,11 +26,14 @@ class Container extends Component {
     extended: PropTypes.bool.isRequired,
     onExtend: PropTypes.func.isRequired,
     getChildrenCount: PropTypes.func.isRequired,
+    currentCategoryId: PropTypes.string.isRequired,
     children: PropTypes.oneOfType(
       [
         PropTypes.arrayOf(PropTypes.element.isRequired),
-        PropTypes.bool
-      ]).isRequired
+        PropTypes.bool,
+        PropTypes.object
+      ]
+    )
   }
 
   handleRenameCategoryClick = () => {

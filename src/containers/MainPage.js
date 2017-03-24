@@ -10,7 +10,6 @@ import Header from '../components/Header';
 import ShowDone from '../components/ShowDone';
 import Filter from '../components/Filter';
 import Progressbar from '../components/Progressbar';
-import Button from '../components/Button';
 import TextBox from '../components/TextBox';
 
 import TaskListContainer from './TaskList';
@@ -19,7 +18,7 @@ import MainPageCategoryContainer from './MainPageCategory';
 
 import './MainPage.res/style.css';
 
-class MainPageContainer extends Component {
+export class MainPageContainer extends Component {
   static propTypes = {
     params: PropTypes.object.isRequired,
     addCategory: PropTypes.func.isRequired,
@@ -47,8 +46,6 @@ class MainPageContainer extends Component {
     return (
       <div className='my-main-page-component'>
         <Header title={'To-Do List'}>
-          <Button style={{ margin: '0 5px' }}type='undo'/>
-          <Button style={{ margin: '0 5px' }}type='redo'/>
           <ShowDone
             handleShowDoneClick={toggleShowDone}
             showDone={showDone}/>

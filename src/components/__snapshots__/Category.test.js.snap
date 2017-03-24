@@ -1,0 +1,21 @@
+exports[`components Category should render self and subcomponents 1`] = `
+<div
+  className="my-category-component">
+  <Button
+    onClick={[Function]}
+    style={
+      Object {
+        "marginRight": "10px",
+      }
+    }
+    type="extend" />
+  <Link
+    onlyActiveOnIndex={false}
+    style={Object {}}
+    to="/main/0/Films/">
+    Films
+  </Link>
+  <div
+    className="test-class" />
+</div>
+`;

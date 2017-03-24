@@ -1,0 +1,23 @@
+exports[`components NotFoundPage should call goBack 1`] = `
+<div>
+  <h1>
+    Task not found
+  </h1>
+  <button
+    onClick={[Function]}>
+    Main page
+  </button>
+</div>
+`;
+
+exports[`components NotFoundPage should render self 1`] = `
+<div>
+  <h1>
+    Task not found
+  </h1>
+  <button
+    onClick={[Function]}>
+    Main page
+  </button>
+</div>
+`;

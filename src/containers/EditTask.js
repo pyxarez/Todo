@@ -7,7 +7,7 @@ import { saveTaskChanges } from '../actions/TaskListActions';
 
 import EditTask from '../components/EditTask';
 
-class EditTaskContainer extends Component {
+export class EditTaskContainer extends Component {
   static propTypes ={
     task: PropTypes.shape({
       id: PropTypes.node.isRequired,

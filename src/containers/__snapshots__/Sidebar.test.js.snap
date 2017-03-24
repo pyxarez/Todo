@@ -1,0 +1,95 @@
+exports[`containers Sidebar should render self 1`] = `
+<div
+  className="my-sidebar-component">
+  <div
+    className="sidebar" />
+</div>
+`;
+
+exports[`containers Sidebar should render self and 3 categories 1`] = `
+<div
+  className="my-sidebar-component">
+  <div
+    className="sidebar">
+    <categoryContainer
+      categories={
+        Array [
+          Object {
+            "id": 0,
+            "nested": Array [
+              Object {
+                "id": 1,
+                "nested": Array [],
+                "title": "The second title",
+              },
+            ],
+            "title": "The first title",
+          },
+          Object {
+            "id": 2,
+            "nested": Array [],
+            "title": "Ther third title",
+          },
+        ]
+      }
+      categoryContainer={[Function]}
+      currentCategoryId={1}
+      currentTaskId={1}
+      id={0}
+      title="The first title">
+      <categoryContainer
+        categories={
+          Array [
+            Object {
+              "id": 0,
+              "nested": Array [
+                Object {
+                  "id": 1,
+                  "nested": Array [],
+                  "title": "The second title",
+                },
+              ],
+              "title": "The first title",
+            },
+            Object {
+              "id": 2,
+              "nested": Array [],
+              "title": "Ther third title",
+            },
+          ]
+        }
+        categoryContainer={[Function]}
+        currentCategoryId={1}
+        currentTaskId={1}
+        id={1}
+        title="The second title" />
+    </categoryContainer>
+    <categoryContainer
+      categories={
+        Array [
+          Object {
+            "id": 0,
+            "nested": Array [
+              Object {
+                "id": 1,
+                "nested": Array [],
+                "title": "The second title",
+              },
+            ],
+            "title": "The first title",
+          },
+          Object {
+            "id": 2,
+            "nested": Array [],
+            "title": "Ther third title",
+          },
+        ]
+      }
+      categoryContainer={[Function]}
+      currentCategoryId={1}
+      currentTaskId={1}
+      id={2}
+      title="Ther third title" />
+  </div>
+</div>
+`;

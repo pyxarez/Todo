@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import './Sidebar.res/style.css';
 
-class Sidebar extends Component {
+export class Sidebar extends Component {
   static propTypes = {
     categoryContainer: PropTypes.func.isRequired,
     categories: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     currentCategoryId: PropTypes.number,
-    currentTaskId: PropTypes.string,
+    currentTaskId: PropTypes.number,
   }
 
   _renderCategoryList = (CategoryContainer, categories = this.props.categories) => {

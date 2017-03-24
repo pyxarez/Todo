@@ -12,7 +12,7 @@ import ShareExtendState from './ShareExtendState';
 
 import './CategoryContainer.res/style.css';
 
-class Container extends Component {
+export class Container extends Component {
   static propTypes = {
     id: PropTypes.node.isRequired,
     title: PropTypes.string.isRequired,
@@ -22,10 +22,13 @@ class Container extends Component {
     getChildrenCount: PropTypes.func.isRequired,
     currentCategoryId: PropTypes.number.isRequired,
     currentTaskId: PropTypes.number.isRequired,
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.element.isRequired),
-        PropTypes.bool
-      ]).isRequired,
+    children: React.PropTypes.oneOfType(
+      [
+        React.PropTypes.arrayOf(React.PropTypes.element.isRequired),
+        React.PropTypes.bool,
+        React.PropTypes.object
+      ]
+    ),
   }
 
   handleChangeTaskLocation = () => {
@@ -53,14 +56,17 @@ class Container extends Component {
 
     return (
       <div className='my-categoryContainer-component'>
-        <Category id={id} title={title} onExtend={ getChildrenCount(children) > 0 && onExtend }>
-          {currentCategoryId !== id && 
+        <Category
+          id={id}
+          title={title}
+          onExtend={ getChildrenCount(children) > 0 && onExtend }>
+          {currentCategoryId !== id &&
             <Button
               type="swap"
               onClick={this.handleChangeTaskLocation}
               style={{ marginLeft: 'auto' }}/>}
         </Category>
-        {children && 
+        {children &&
           <div className={extended
             ? "categories categories_extended"
             : "categories categories_hidden"}>{children}</div>}
@@ -77,4 +83,3 @@ const mapDispatchToProps = (dispatch) => {
 
 const EditPageCategoryContainer = ShareExtendState(Container);
 export default connect(null, mapDispatchToProps)(EditPageCategoryContainer)
-

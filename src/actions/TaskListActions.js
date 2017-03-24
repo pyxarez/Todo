@@ -7,71 +7,87 @@ import {
 
 import * as api from '../api/api';
 
-export function getTasks(taskId) {
+const gettingEmptyTaskList = () => {
+  return {
+    type: GET_TASKS,
+    payload: {
+      tasks: []
+    }
+  }
+};
+
+const gettingTasksSuccess = (tasks) => {
+  return {
+    type: GET_TASKS,
+    payload: {
+      tasks
+    }
+  }
+};
+
+const addingTaskSuccess = (taskId, title) => {
+  return {
+    type: ADD_TASK,
+    payload: {
+      taskId,
+      title
+    }
+  }
+};
+
+const ckeckingDoneSuccess = (taskId) => {
+  return {
+    type: CHECK_DONE,
+    payload: {
+      taskId
+    }
+  }
+};
+
+const savingTaskChangesSuccess = (chengedTaskData) => {
+  return {
+    type: SAVE_TASK_CHANGES,
+    payload: chengedTaskData
+  }
+};
+
+export function getTasks(categoryId) {
   return (dispatch) => {
-    if (taskId === null) {
-      dispatch({
-        type: GET_TASKS,
-        payload: {
-          tasks: []
-        }
-      });
+    if (categoryId === null) {
+      dispatch( gettingEmptyTaskList() );
     }
 
-    api.getTasks(taskId)
+    return api.getTasks(categoryId)
       .then((tasks) => {
-        dispatch({
-          type: GET_TASKS,
-          payload: {
-            tasks
-          }
-        });
+        dispatch( gettingTasksSuccess(tasks) );
       });
   };
 };
 
 export function addTask(categoryId, title) {
   return (dispatch) => {
-    api.addTask(categoryId, title)
+    return api.addTask(categoryId, title)
       .then((taskId) => {
-        if (taskId === false) {
-          alert('Выберите категорию');
-          return;
-        }
-
-        dispatch({
-          type: ADD_TASK,
-          payload: {
-            taskId,
-            title
-          }
-        });
+        dispatch( addingTaskSuccess(taskId, title) );
+        return taskId;
       });
   };
 };
 
 export function checkDone(categoryId, taskId) {
   return (dispatch) => {
-    api.checkDone(categoryId, taskId)
+    return api.checkDone(categoryId, taskId)
       .then((taskId) => {
-        dispatch({
-          type: CHECK_DONE,
-          payload: {
-            taskId
-          }
-        });
+        dispatch( ckeckingDoneSuccess(taskId) );
       });
   };
 };
 
 export function saveTaskChanges(options) {
   return (dispatch) => {
-    api.saveTaskChanges(options)
-      .then((newTask) => {
-        dispatch({
-          type: SAVE_TASK_CHANGES,
-          payload: newTask
-        });
+    return api.saveTaskChanges(options)
+      .then((chengedTaskData) => {
+        dispatch( savingTaskChangesSuccess(chengedTaskData) );
       });
   };
 };

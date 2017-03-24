@@ -1,0 +1,6 @@
+exports[`containers higher-order component ShareExtendState should render self and subcomponents 1`] = `
+<TestComponent
+  extended={false}
+  getChildrenCount={[Function]}
+  onExtend={[Function]} />
+`;

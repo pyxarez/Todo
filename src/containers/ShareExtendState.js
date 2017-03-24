@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-//Контролировать ли этот state через redux?...
 const ShareExtendState = (CategoryContainer) => class extends Component {
   state = { extended: false }
 

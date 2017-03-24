@@ -1,0 +1,26 @@
+exports[`containers EditPageContainer should render NotFoundPage for lack of requested task 1`] = `<NotFound />`;
+
+exports[`containers EditPageContainer should render self 1`] = `
+<div
+  className="my-edit-page-component">
+  <Header
+    title="Mishanya" />
+  <div
+    className="main">
+    <Connect(Sidebar)
+      categoryContainer={[Function]}
+      currentCategoryId={0}
+      currentTaskId={1} />
+    <Connect(EditTaskContainer)
+      categoryId={0}
+      task={
+        Object {
+          "description": "woke up",
+          "id": 1,
+          "isDone": true,
+          "title": "Mishanya",
+        }
+      } />
+  </div>
+</div>
+`;

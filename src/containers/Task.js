@@ -8,7 +8,7 @@ import { getProgress } from '../actions/ProgressActions';
 
 import Task from '../components/Task';
 
-class TaskContainer extends Component {
+export class TaskContainer extends Component {
   static propTypes = {
     categoryId: PropTypes.string.isRequired,
     task: PropTypes.shape({
@@ -24,7 +24,7 @@ class TaskContainer extends Component {
   handleEditTaskClick = () => {
     const categoryId = this.props.categoryId;
     const {
-      id:taskId,
+      id: taskId,
       title
     } = this.props.task;
 

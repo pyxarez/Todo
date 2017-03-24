@@ -176,7 +176,7 @@ export class DataStorage {
     const taskId = this._taskIdGen.getNextId();
     const { category } = this._findTarget(categoryId);
     if (!category) {
-      return false;
+      return null;
     }
 
     category.tasks.unshift(new Task(taskId, title));
@@ -193,6 +193,7 @@ export class DataStorage {
 
   checkDone(categoryId, targetTaskId) {
     const tasks = this.getTasks(categoryId);
+
     tasks.find(task => task.id === targetTaskId)
             .toggleDone();
 
@@ -217,8 +218,8 @@ export class DataStorage {
   }
 
   changeTaskLocation(prevLocationId, targetLocationId, taskId) {
-    const { category:prevCategory } = this._findTarget(+prevLocationId);
-    const { category:targetCategory } = this._findTarget(+targetLocationId);
+    const { category: prevCategory } = this._findTarget(+prevLocationId);
+    const { category: targetCategory } = this._findTarget(+targetLocationId);
 
     const taskIndex = prevCategory.tasks.findIndex((task) => task.id === +taskId);
     const changingTask = prevCategory.tasks.splice(taskIndex, 1);

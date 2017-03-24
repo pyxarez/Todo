@@ -1,0 +1,39 @@
+exports[`containers MainPageContainer should render self and subcomponents 1`] = `
+<div
+  className="my-main-page-component">
+  <Header
+    title="To-Do List">
+    <ShowDone
+      handleShowDoneClick={[Function]}
+      showDone={true} />
+    <Filter
+      URLParams={
+        Object {
+          "id": "0",
+        }
+      } />
+    <Progressbar
+      progress="0%" />
+  </Header>
+  <div
+    className="main">
+    <div
+      className="main__sidebar">
+      <TextBox
+        isFocused={true}
+        onClick={[Function]}
+        placeholder="Enter category title" />
+      <Connect(Sidebar)
+        categoryContainer={[Function]}
+        currentCategoryId={0} />
+    </div>
+    <Connect(TaskListContainer)
+      URLParams={
+        Object {
+          "id": "0",
+        }
+      }
+      showDone={true} />
+  </div>
+</div>
+`;

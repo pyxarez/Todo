@@ -14,7 +14,7 @@ export default class Filter extends Component {
   }
 
   handleClearClick = () => {
-    this.textInput.value = "";
+    this.textInput.value = '';
 
     const {
       id,
@@ -47,7 +47,7 @@ export default class Filter extends Component {
           onChange={this.handleInputUpdate}
           className="filter__input"
           type="text"
-          placeholder="Search" />
+          placeholder="Search"/>
         <Button onClick={this.handleClearClick} type="clear"/>
       </div>
     );

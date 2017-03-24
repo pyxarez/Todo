@@ -1,0 +1,7 @@
+exports[`containers TaskContainer should render self and subcomponents 1`] = `
+<Task
+  handleDoneTaskClick={[Function]}
+  handleEditTaskClick={[Function]}
+  isDone={false}
+  title="New Title" />
+`;

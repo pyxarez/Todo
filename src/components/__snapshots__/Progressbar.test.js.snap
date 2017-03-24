@@ -1,0 +1,12 @@
+exports[`components Progressbar should render self 1`] = `
+<div
+  className="my-progressbar-component">
+  <div
+    className="progressbar__state"
+    style={
+      Object {
+        "width": "20%",
+      }
+    } />
+</div>
+`;
