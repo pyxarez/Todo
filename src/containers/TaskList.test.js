@@ -27,8 +27,9 @@ const setup = () => {
         description: '1 2 34 5 6 7'
       },
     ],
-    addTask: jest.fn(() => {
-      return new Promise((resolve) => {
+    addTask: jest.fn((id, title) => {
+      return new Promise((resolve, reject) => {
+          if (!id || !title) reject('Error');
           resolve('I\'m born!');
         });
       }
@@ -56,7 +57,17 @@ describe('containers', () => {
       
       expect(wrapper).toMatchSnapshot();
     });
-    
+
+    it('should render component without done tasks', () => {
+      const { props } = setup();
+      const newProps = {
+        ...props,
+        showDone: false
+      };
+      
+      const wrapper = shallow(<TaskListContainer {...newProps}></TaskListContainer>)
+      expect(wrapper).toMatchSnapshot();
+    });
 
     it('should call addTask', () => {
       const { props, wrapper } = setup();
@@ -67,18 +78,61 @@ describe('containers', () => {
         .toBeCalledWith(props.URLParams.id, newTitle);
     });
 
+    it('should call getProgress', () => {
+      const { props, wrapper } = setup();
+      const newTitle = 'New title';
+      
+      return expect(wrapper.find(TaskList).prop('onClick')(newTitle)
+        .then(() => {
+          expect(props.getProgress).toBeCalled();
+        })).resolves;
+    });
+
+    it('should call alert after failure in addTask function', () => {
+      const { props } = setup();
+      const newProps = {
+        ...props,
+        URLParams: {
+          id: undefined,
+        } 
+      };
+      const wrapper = shallow(<TaskListContainer {...newProps}/>);
+      window.alert = jest.fn();
+    
+      
+      return expect(wrapper.find(TaskList).prop('onClick')()
+        .then(() => {
+          expect(window.alert).toBeCalled();
+        })).rejects;
+    });
+
     it('should call getTasks after receiving new props', () => {
       const { wrapper, props } = setup();
       const newProps = {
         URLParams: {
           id: 1
         }
-      }
-      
+      };
+
       wrapper.instance().componentWillReceiveProps(newProps);
 
       expect(props.getTasks)
         .toBeCalledWith(newProps.URLParams.id);
+    });
+
+    it('should not call getTasks after receiving new props', () => {
+      const { wrapper, props } = setup();
+      const nextProps = {
+        URLParams: {
+          id: 0
+        }
+      };
+
+      wrapper.instance().componentWillReceiveProps(nextProps);
+
+      expect(props.getTasks)
+        .not
+        .toBeCalled();
     });
   });
 });

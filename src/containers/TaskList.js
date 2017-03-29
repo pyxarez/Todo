@@ -34,8 +34,8 @@ export class TaskListContainer extends Component {
     } = this.props;
     const id = this.props.URLParams.id;
 
-    addTask(id, title)
-      .then(() => { getProgress(); })
+    return addTask(id, title)
+      .then(() => { getProgress();})
       .catch(e => { alert(e); });
   }
 

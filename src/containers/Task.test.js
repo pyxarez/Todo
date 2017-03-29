@@ -4,7 +4,17 @@ import { shallow, mount } from 'enzyme';
 import { TaskContainer } from './Task';
 import Task from '../components/Task';
 
+jest.mock('react-router', () => {
+  return {
+    browserHistory: {
+      push: jest.fn()
+    }
+  };
+});
+import { browserHistory } from 'react-router';
+
 const setup = () => {
+
   const props = {
     categoryId: '0',
     task: {
@@ -31,13 +41,22 @@ describe('containers', () => {
       
       expect(wrapper).toMatchSnapshot();
     });
-    
 
-    it('should call getProgress', () => {
+    it('should call getProgress and checkDone', () => {
       const { props, wrapper } = setup();
 
       wrapper.find(Task).prop('handleDoneTaskClick')();
       expect(props.getProgress).toBeCalled();
+      expect(props.checkDone)
+        .toBeCalledWith(props.categoryId, props.task.id);
+    });
+
+    it('should call browserHistory.push()', () => {
+      const { wrapper, props } = setup();
+
+      wrapper.find(Task).prop('handleEditTaskClick')();
+      expect(browserHistory.push)
+        .toBeCalledWith(`/edit/${props.categoryId}/${props.task.id}/${props.task.title}`);
     });
   });
 });

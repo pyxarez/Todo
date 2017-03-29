@@ -4,6 +4,16 @@ import { mount, shallow } from 'enzyme';
 import { EditTaskContainer } from './EditTask';
 import EditTask from '../components/EditTask';
 
+
+jest.mock('react-router', () => {
+  return {
+    browserHistory: {
+      goBack: jest.fn()
+    }
+  };
+});
+import { browserHistory } from 'react-router';
+
 const setup = () => {
   const props = {
     task: {
@@ -34,7 +44,7 @@ describe('containers', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it('should call saveTaskChanges', () => {
+    it('should call saveTaskChanges and browserHistory.goBack', () => {
       const { wrapper, props } = setup();
       expect(wrapper).toMatchSnapshot();
       
@@ -61,7 +71,14 @@ describe('containers', () => {
         isDone,
         description
       });
-      expect(wrapper).toMatchSnapshot();
+      expect(browserHistory.goBack).toBeCalled();
+    });
+
+    it('should call browserHistory.goBack on cancel click', () => {
+      const { wrapper } = setup();
+
+      wrapper.find(EditTask).prop('onCancel')();
+      expect(browserHistory.goBack).toBeCalled();
     });
   });
 });

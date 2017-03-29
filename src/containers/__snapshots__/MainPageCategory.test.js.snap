@@ -2,7 +2,7 @@ exports[`containers MainPageCategory should render self and subcomponents 1`] = 
 <div
   className="my-categoryContainer-component">
   <Category
-    id={0}
+    id="0"
     onExtend={[Function]}
     title="New title">
     <Button
@@ -29,11 +29,12 @@ exports[`containers MainPageCategory should render self and subcomponents 1`] = 
 </div>
 `;
 
-exports[`containers MainPageCategory should render self and subcomponents with       not extended container 1`] = `
+exports[`containers MainPageCategory should render self and subcomponents with 
+      not extended container 1`] = `
 <div
   className="my-categoryContainer-component">
   <Category
-    id={0}
+    id="0"
     onExtend={[Function]}
     title="New title">
     <Button
@@ -64,7 +65,7 @@ exports[`containers MainPageCategory should render self and subcomponents withou
 <div
   className="my-categoryContainer-component">
   <Category
-    id={0}
+    id="0"
     onExtend={false}
     title="New title">
     <Button

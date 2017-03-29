@@ -26,8 +26,8 @@ export class MainPageContainer extends Component {
     toggleShowDone: PropTypes.func.isRequired,
     getTasks: PropTypes.func.isRequired,
     getCategories: PropTypes.func.isRequired,
-    progress: React.PropTypes.string.isRequired,
-    showDone: React.PropTypes.bool.isRequired,
+    progress: PropTypes.string.isRequired,
+    showDone: PropTypes.bool.isRequired,
   }
 
   componentDidMount = () => {
