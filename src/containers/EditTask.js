@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { validateInput } from '../utils/helpers';
 
 import { saveTaskChanges } from '../actions/TaskListActions';
 
@@ -15,7 +16,7 @@ export class EditTaskContainer extends Component {
       isDone: PropTypes.bool.isRequired,
       description: PropTypes.string.isRequired,
     }),
-    categoryId: PropTypes.node.isRequired,
+    categoryId: PropTypes.number.isRequired,
     saveTaskChanges: PropTypes.func.isRequired,
   }
 
@@ -23,6 +24,11 @@ export class EditTaskContainer extends Component {
     const title = this.titleInput.value;
     const isDone = this.doneCheckBox.checked;
     const description = this.taskDescription.value;
+
+    if (!validateInput(title)) {
+      alert('Enter correct task title');
+      return;
+    }
 
     const options = {
       categoryId: this.props.categoryId,

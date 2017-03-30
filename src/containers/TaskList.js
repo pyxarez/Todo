@@ -21,7 +21,7 @@ export class TaskListContainer extends Component {
     getTasks: PropTypes.func.isRequired,
     getProgress: React.PropTypes.func.isRequired,
     URLParams: PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       category: PropTypes.string,
       filter: PropTypes.string
     })
@@ -40,8 +40,8 @@ export class TaskListContainer extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    const nextId = +nextProps.URLParams.id;
-    const prevId = +this.props.URLParams.id
+    const nextId = nextProps.URLParams.id;
+    const prevId = this.props.URLParams.id
 
     if ( (typeof nextId !== 'undefined') && (nextId !== prevId) ){
       this.props.getTasks(nextId);
@@ -58,11 +58,11 @@ export class TaskListContainer extends Component {
       filter: keyWord = ''
     } = this.props.URLParams;
 
-    const newTaskList = showDone
+    const sortedTaskList = showDone
       ? tasks
       : tasks.filter(task => !task.isDone);
 
-    return newTaskList
+    return sortedTaskList
       .filter((task) => task.title
         .toLowerCase()
         .includes(keyWord

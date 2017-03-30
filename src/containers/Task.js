@@ -10,7 +10,7 @@ import Task from '../components/Task';
 
 export class TaskContainer extends Component {
   static propTypes = {
-    categoryId: PropTypes.string.isRequired,
+    categoryId: PropTypes.number.isRequired,
     task: PropTypes.shape({
       id: PropTypes.node.isRequired,
       title: PropTypes.string.isRequired,

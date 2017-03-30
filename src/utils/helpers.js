@@ -19,12 +19,28 @@ export function findTarget(target, storage) {
   return {};
 }
 
-export function deepClone(target) {
-  return JSON.parse(JSON.stringify(target));
+export const validateInput = (value) =>  {
+  return !!value.trim()
+};
+
+const containsOnlyNumber = (string) => {
+  return string.match(/^\d+$/);
 }
 
-export function logger(data) {
-  console.log('Info about asnync aciton response');
-  console.log(data);
-  console.log('---------------------------------')
+export const toNumberKeyValues = (object) =>  {
+  let newObject = {};
+  
+  for (let key in object) {
+    if ( object.hasOwnProperty(key) && object[key] ){
+      newObject[key] = containsOnlyNumber(object[key])
+        ? parseInt(object[key], 10)
+        : object[key];
+    }
+  }
+
+  return newObject;
+};
+
+export function deepClone(target) {
+  return JSON.parse(JSON.stringify(target));
 }

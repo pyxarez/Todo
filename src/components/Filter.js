@@ -7,7 +7,7 @@ import './Filter.res/style.css';
 export default class Filter extends Component {
   static propTypes = {
     URLParams: React.PropTypes.shape({
-      id: React.PropTypes.string,
+      id: React.PropTypes.number,
       category: React.PropTypes.string,
       filter: React.PropTypes.string
     })
@@ -21,7 +21,7 @@ export default class Filter extends Component {
       category
     } = this.props.URLParams;
 
-    if (id && category) {
+    if ((id !== undefined) && category) {
       const path = `/main/${id}/${category}/`;
       browserHistory.push(path);
     }
@@ -33,7 +33,7 @@ export default class Filter extends Component {
       category
     } = this.props.URLParams;
 
-    if (id && category) {
+    if ((id !== undefined) && category) {
       const path = `/main/${id}/${category}/${e.target.value}`;
       browserHistory.push(path);
     }

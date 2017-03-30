@@ -6,6 +6,8 @@ import { getProgress } from '../actions/ProgressActions';
 import { getTasks } from '../actions/TaskListActions';
 import toggleShowDone from '../actions/ShowDoneActions';
 
+import { toNumberKeyValues } from '../utils/helpers';
+
 import Header from '../components/Header';
 import ShowDone from '../components/ShowDone';
 import Filter from '../components/Filter';
@@ -35,13 +37,21 @@ export class MainPageContainer extends Component {
   }
 
   render() {
-    const id = +this.props.params.id;
     const {
       addCategory,
       progress,
       showDone,
-      toggleShowDone
+      toggleShowDone,
+      params
     } = this.props;
+    const URLParams = {
+      ...toNumberKeyValues({
+        id: params.id,
+      }),
+      category: params.category,
+      filter: params.filter
+    };
+    const { id } = URLParams;
 
     return (
       <div className='my-main-page-component'>
@@ -50,7 +60,7 @@ export class MainPageContainer extends Component {
             handleShowDoneClick={toggleShowDone}
             showDone={showDone}/>
           <Filter
-            URLParams={this.props.params}/>
+            URLParams={URLParams}/>
           <Progressbar progress={progress}/>
         </Header>
         <div className='main'>
@@ -64,7 +74,7 @@ export class MainPageContainer extends Component {
               currentCategoryId={id}/>
           </div>
           <TaskListContainer
-            URLParams={this.props.params}
+            URLParams={URLParams}
             showDone={showDone}/>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { toNumberKeyValues } from '../utils/helpers';
 
 import Header from '../components/Header';
 import NotFoundPage from '../components/NotFoundPage';
@@ -22,12 +23,15 @@ export class EditPageContainer extends Component {
 
   render() {
     const {
+      tasks,
+      params
+    } = this.props;
+    const {
       categoryId,
       taskId
-    } = this.props.params;
-    const { tasks } = this.props;
+    } = toNumberKeyValues(params);
     const task = tasks
-      .find((task) => task.id === +this.props.params.taskId);
+      .find((task) => task.id === taskId);
 
     if (!task) return <NotFoundPage />;
 
@@ -37,11 +41,11 @@ export class EditPageContainer extends Component {
         <div className="main">
           <Sidebar
             categoryContainer={EditPageCategoryContainer}
-            currentCategoryId={+categoryId}
-            currentTaskId={+taskId}/>
+            currentCategoryId={categoryId}
+            currentTaskId={taskId}/>
           <EditTaskContainer
             task={task}
-            categoryId={+categoryId}/>
+            categoryId={categoryId}/>
         </div>
       </div>
     );
