@@ -10,8 +10,13 @@ const setup = () => {
     title: 'New title',
     renameCategory: jest.fn(),
     addNestedCategory: jest.fn(),
-    deleteCategory: jest.fn(),
-    getTasks: jest.fn(),
+    deleteCategory: jest.fn(() => new Promise((resolve, reject) => {
+      resolve('deleteCategory resolved');
+    })),
+    getProgress: jest.fn(),
+    getTasks: jest.fn(() => new Promise((resolve, reject) => {
+      resolve('getTasks resolved');
+    })),
     extended: true,
     onExtend: () => {},
     currentCategoryId: 0,
@@ -108,27 +113,35 @@ describe('Containers :: MainPageCategory', () => {
       .toBeCalled();
   });
   
-  it('should call deleteCategory and getTasks', () => {
+  it('should call deleteCategory and getTasks', async () => {
     const { wrapper, props } = setup();
 
     window.confirm = jest.fn(() => true);
-    wrapper.find(Button).at(1).prop('onClick')();
+    try {
+      await wrapper.find(Button).at(1).prop('onClick')();
 
-    expect(props.deleteCategory)
-      .toBeCalledWith(props.id);
-    expect(props.getTasks)
-      .toBeCalledWith(null);
+      expect(props.deleteCategory)
+        .toBeCalledWith(props.id);
+      expect(props.getTasks)
+        .toBeCalledWith(null);
+    } catch(e) {
+      throw e;
+    }
   });
   
-  it('should prevent deleteCategory call', () => {
+  it('should prevent deleteCategory call', async () => {
     const { wrapper, props } = setup();
 
     window.confirm = jest.fn(() => false);
-    wrapper.find(Button).at(1).prop('onClick')();
+    try {
+      await wrapper.find(Button).at(1).prop('onClick')();
 
-    expect(props.deleteCategory)
-      .not
-      .toBeCalled();
+      expect(props.deleteCategory)
+        .not
+        .toBeCalled();
+    } catch(e) {
+      throw e;
+    }
   });
   
   it('should prevent getTasks call', () => {

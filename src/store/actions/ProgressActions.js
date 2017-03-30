@@ -13,11 +13,11 @@ const gettingProgressSuccess = (progress) => {
   };
 };
 
-export const getProgress = () => {
+export function getProgress() {
   return (dispatch) => {
     return api.getProgress()
       .then((progress) => {
         dispatch( gettingProgressSuccess(progress) );
       });
-  };
-};
+  }
+}

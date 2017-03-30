@@ -23,6 +23,7 @@ export class Container extends Component {
     renameCategory: PropTypes.func.isRequired,
     addNestedCategory: PropTypes.func.isRequired,
     deleteCategory: PropTypes.func.isRequired,
+    getProgress: PropTypes.func.isRequired,
     getTasks: PropTypes.func.isRequired,
     extended: PropTypes.bool.isRequired,
     onExtend: PropTypes.func.isRequired,
@@ -66,16 +67,18 @@ export class Container extends Component {
       deleteCategory,
       currentCategoryId,
       getTasks,
+      getProgress
     } = this.props;
 
     if (!confirm("Are you sure about this?")) return;
 
-    deleteCategory(id);
-    getProgress();
+    deleteCategory(id)
+      .then(() => { getProgress(); });
+
     if (currentCategoryId === id) {
-      getTasks(null);
+      return getTasks(null);
     } else {
-      getTasks(id);
+      return getTasks(id);
     }
   }
 
@@ -117,6 +120,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteCategory: bindActionCreators(deleteCategory, dispatch),
     renameCategory: bindActionCreators(renameCategory, dispatch),
     getTasks: bindActionCreators(getTasks, dispatch),
+    getProgress: bindActionCreators(getProgress, dispatch)
   }
 }
 

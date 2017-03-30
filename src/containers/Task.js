@@ -40,8 +40,8 @@ export class TaskContainer extends Component {
     } = this.props;
     const { id } = this.props.task;
 
-    checkDone(categoryId, id);
-    getProgress();
+    return checkDone(categoryId, id)
+      .then(() => { getProgress(); });
   }
 
   render() {

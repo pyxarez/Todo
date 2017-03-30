@@ -23,7 +23,9 @@ const setup = () => {
       isDone: false,
       description: '1 2 34 5 6 7'
     },
-    checkDone: jest.fn(),
+    checkDone: jest.fn(() => new Promise((resolve, reject) => {
+      resolve('Resolved');
+    })),
     getProgress: jest.fn()
   }
   const wrapper = shallow(<TaskContainer {...props}/>);
@@ -41,13 +43,17 @@ describe('Containers :: TaskContainer', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call getProgress and checkDone', () => {
+  it('should call getProgress and checkDone', async () => {
     const { props, wrapper } = setup();
 
-    wrapper.find(Task).prop('handleDoneTaskClick')();
-    expect(props.getProgress).toBeCalled();
-    expect(props.checkDone)
-      .toBeCalledWith(props.categoryId, props.task.id);
+    try {
+      await wrapper.find(Task).prop('handleDoneTaskClick')();
+      expect(props.getProgress).toBeCalled();
+      expect(props.checkDone)
+        .toBeCalledWith(props.categoryId, props.task.id);
+    } catch(e) {
+      throw e;
+    }
   });
 
   it('should call browserHistory.push()', () => {
