@@ -84,7 +84,7 @@
       "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
     ],
     
-    "testEnvironment": "jsdom",
+    "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
