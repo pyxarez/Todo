@@ -16,7 +16,7 @@ import { browserHistory } from 'react-router';
 const setup = () => {
 
   const props = {
-    categoryId: '0',
+    categoryId: 0,
     task: {
       id: 0,
       title: 'New Title',
@@ -34,29 +34,27 @@ const setup = () => {
   }
 };
 
-describe('containers', () => {
-  describe('TaskContainer', () => {
-    it('should render self and subcomponents', () => {
-      const { wrapper } = setup();
-      
-      expect(wrapper).toMatchSnapshot();
-    });
+describe('Containers :: TaskContainer', () => {
+  it('should render self and subcomponents', () => {
+    const { wrapper } = setup();
+    
+    expect(wrapper).toMatchSnapshot();
+  });
 
-    it('should call getProgress and checkDone', () => {
-      const { props, wrapper } = setup();
+  it('should call getProgress and checkDone', () => {
+    const { props, wrapper } = setup();
 
-      wrapper.find(Task).prop('handleDoneTaskClick')();
-      expect(props.getProgress).toBeCalled();
-      expect(props.checkDone)
-        .toBeCalledWith(props.categoryId, props.task.id);
-    });
+    wrapper.find(Task).prop('handleDoneTaskClick')();
+    expect(props.getProgress).toBeCalled();
+    expect(props.checkDone)
+      .toBeCalledWith(props.categoryId, props.task.id);
+  });
 
-    it('should call browserHistory.push()', () => {
-      const { wrapper, props } = setup();
+  it('should call browserHistory.push()', () => {
+    const { wrapper, props } = setup();
 
-      wrapper.find(Task).prop('handleEditTaskClick')();
-      expect(browserHistory.push)
-        .toBeCalledWith(`/edit/${props.categoryId}/${props.task.id}/${props.task.title}`);
-    });
+    wrapper.find(Task).prop('handleEditTaskClick')();
+    expect(browserHistory.push)
+      .toBeCalledWith(`/edit/${props.categoryId}/${props.task.id}/${props.task.title}`);
   });
 });

@@ -5,9 +5,6 @@ import Button from './Button';
 const setup = () => {
   const props = {
     onClick: () => {},
-    style: {
-      margin: '0 5px'
-    },
     type: 'swap'
   };
 
@@ -19,11 +16,9 @@ const setup = () => {
   }
 };
 
-describe('components', () => {
-  describe('Button', () => {
-    it('should render self', () => {
-      const { enzymeWrapper } = setup();
-      expect(enzymeWrapper).toMatchSnapshot();
-    });
+describe('Component :: Button', () => {
+  it('should render self', () => {
+    const { enzymeWrapper } = setup();
+    expect(enzymeWrapper).toMatchSnapshot();
   });
 });

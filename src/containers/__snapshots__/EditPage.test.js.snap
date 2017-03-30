@@ -1,6 +1,6 @@
-exports[`containers EditPageContainer should render NotFoundPage for lack of requested task 1`] = `<NotFound />`;
+exports[`Containers :: EditPageContainer should render NotFoundPage for lack of requested task 1`] = `<NotFound />`;
 
-exports[`containers EditPageContainer should render self 1`] = `
+exports[`Containers :: EditPageContainer should render self 1`] = `
 <div
   className="my-edit-page-component">
   <Header

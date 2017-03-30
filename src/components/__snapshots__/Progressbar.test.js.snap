@@ -1,4 +1,4 @@
-exports[`components Progressbar should render self 1`] = `
+exports[`Components :: Progressbar should render self 1`] = `
 <div
   className="my-progressbar-component">
   <div

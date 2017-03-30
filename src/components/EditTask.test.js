@@ -9,7 +9,7 @@ const setup = () => {
     onCancel: () => {}
   };
 
-  const enzymeWrapper = shallow(
+  const wrapper = shallow(
     <EditTask {...props}>
       <div className='test-class'/>
     </EditTask>
@@ -17,15 +17,20 @@ const setup = () => {
 
   return {
     props,
-    enzymeWrapper
+    wrapper
   }
 };
 
-describe('components', () => {
-  describe('EditTask', () => {
-    it('should render self and subcomponents', () => {
-      const { enzymeWrapper } = setup();
-      expect(enzymeWrapper).toMatchSnapshot();
-    });
+describe('Components :: EditTask', () => {
+  it('should render self and subcomponents', () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should not render children', () => {
+    const { props } = setup();
+    const wrapper = shallow(<EditTask {...props} ></EditTask>);
+    
+    expect(EditTask).toMatchSnapshot();
   });
 });

@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, Redirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
+
 import configureStore from './store/configureStore';
 
 import { getCategories } from './api/api';
-import { GET_CATEGORIES } from './constants/Category';
+import { GET_CATEGORIES } from './store/constants/Category';
 
 import MainPageContainer from './containers/MainPage.js';
 import EditPageContainer from './containers/EditPage.js';

@@ -11,50 +11,53 @@
   outline: none;
   height: 20px;
   width: 20px;
-
+  
   &:active {
     box-shadow:inset 0 2px 0px rgba(0,0,0,.1),  0 2px 0px rgba(255,255,255,.4), inset 0 0px 20px rgba(0,0,0,.2);
   }
+  
 }
 
-.button-add {
-  background-image: url('./add.svg');
-}
+.button {
+  &-add {
+    background-image: url('./add.svg');
+  }
+  
+  &-delete {
+    background-image: url('./delete.svg');
+  }
+  
+  &-edit {
+    background-image: url('./edit.svg');
+  }
+  
+  &-clear {
+    background-image: url('./clear.svg');
+  }
+  
+  &-swap {
+    background-image: url('./swap.svg');
+  }
+  
+  &-extend {
+    background-image: url('./extend.svg');
+  }
+  
+  &-undo {
+    background-image: url('./undo.svg');
+  }
 
-.button-delete {
-  background-image: url('./delete.svg');
-}
-
-.button-edit {
-  background-image: url('./edit.svg');
-}
-
-.button-clear {
-  background-image: url('./clear.svg');
-}
-
-.button-swap {
-  background-image: url('./swap.svg');
-}
-
-.button-extend {
-  background-image: url('./extend.svg');
-}
-
-.button-undo {
-  background-image: url('./undo.svg');
-}
-
-.button-redo:before {
-  content: '';
-  position:absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-image: url('./undo.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 14px 14px;
-  transform: rotate(180deg);
+  &-redo {
+    content: '';
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url('./undo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 14px;
+    transform: rotate(180deg);
+  }
 }

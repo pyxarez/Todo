@@ -30,6 +30,7 @@ export class EditPageContainer extends Component {
       categoryId,
       taskId
     } = toNumberKeyValues(params);
+    
     const task = tasks
       .find((task) => task.id === taskId);
 

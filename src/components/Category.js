@@ -1,30 +1,29 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import Button from './Button';
 import './Category.res/style.css';
 
 Category.propTypes = {
-  id: React.PropTypes.node.isRequired,
-  title: React.PropTypes.string.isRequired,
-  onExtend: React.PropTypes.oneOfType(
+  id: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  onExtend: PropTypes.oneOfType(
     [
-      React.PropTypes.func,
-      React.PropTypes.bool
+      PropTypes.func,
+      PropTypes.bool
     ]).isRequired,
-  children: React.PropTypes.oneOfType(
-    [
-      React.PropTypes.arrayOf(React.PropTypes.element.isRequired),
-      React.PropTypes.bool,
-      React.PropTypes.object
-    ])
+  children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.element.isRequired),
+      PropTypes.bool,
+      PropTypes.object
+  ])
 }
 
 export default function Category({ id, title, children, onExtend }) {
   return (
     <div className="my-category-component">
       {onExtend &&
-        <Button type="extend" onClick={onExtend} style={{ marginRight: '10px' }}/>}
+        <Button type="extend" onClick={onExtend}/>}
       <Link to={`/main/${id}/${title}/`}>{title}</Link>
       {children}
     </div>

@@ -15,11 +15,12 @@ export default class TextBox extends Component {
 
   handleClick = () => {
     const value = this.textInput.value;
-    if (value.trim() === "") {
-      confirm("Type something please");
+    if (value.trim() === '') {
+      alert("Type something please");
       return;
     }
-    this.textInput.value = "";
+    
+    this.textInput.value = '';
     this.props.onClick(value);
   }
 
@@ -30,7 +31,7 @@ export default class TextBox extends Component {
   render() {
     const {
       isFocused,
-      placeholder
+      placeholder,
     }= this.props;
 
     return (

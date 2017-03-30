@@ -3,8 +3,8 @@ import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { checkDone } from '../actions/TaskListActions';
-import { getProgress } from '../actions/ProgressActions';
+import { checkDone } from '../store/actions/TaskListActions';
+import { getProgress } from '../store/actions/ProgressActions';
 
 import Task from '../components/Task';
 

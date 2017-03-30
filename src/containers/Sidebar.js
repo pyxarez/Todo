@@ -14,11 +14,12 @@ export class Sidebar extends Component {
   _renderCategoryList = (CategoryContainer, categories = this.props.categories) => {
     return categories.map((category) => {
       const nestedCategories = category.nested;
+      const id = parseInt(category.id);
 
       return (
         <CategoryContainer
-          key={category.id}
-          id={category.id}
+          key={id}
+          id={id}
           title={category.title}
           {...this.props}>
           {category.nested.length > 0 &&

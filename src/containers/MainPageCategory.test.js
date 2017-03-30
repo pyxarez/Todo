@@ -3,11 +3,10 @@ import { shallow, mount } from 'enzyme';
 
 import { Container } from './MainPageCategory';
 import Button from '../components/Button';
-jest.mock()
 
 const setup = () => {
   const props = {
-    id: '0',
+    id: 0,
     title: 'New title',
     renameCategory: jest.fn(),
     addNestedCategory: jest.fn(),
@@ -15,7 +14,7 @@ const setup = () => {
     getTasks: jest.fn(),
     extended: true,
     onExtend: () => {},
-    currentCategoryId: '0',
+    currentCategoryId: 0,
     getChildrenCount: jest.fn(() => 1)
   };
 
@@ -31,122 +30,119 @@ const setup = () => {
   }
 };
 
-describe('containers', () => {
-  describe('MainPageCategory', () => {
-    it('should render self and subcomponents', () => {
-      const { wrapper } = setup();
+describe('Containers :: MainPageCategory', () => {
+  it('should render self and subcomponents', () => {
+    const { wrapper } = setup();
 
-      expect(wrapper).toMatchSnapshot();
-    });
+    expect(wrapper).toMatchSnapshot();
+  });
 
-    it('should render self and subcomponents without children', () => {
-      const { props } = setup();
-      const newProps = {
-        ...props,
-        getChildrenCount: jest.fn(() => 0)
-      }
-      const wrapper = shallow(<Container {...newProps}></Container>);
+  it('should render self and subcomponents without children', () => {
+    const { props } = setup();
+    const newProps = {
+      ...props,
+      getChildrenCount: jest.fn(() => 0)
+    }
+    const wrapper = shallow(<Container {...newProps}></Container>);
 
-      expect(wrapper).toMatchSnapshot();
-    });
+    expect(wrapper).toMatchSnapshot();
+  });
 
-    it(`should render self and subcomponents with 
-      not extended container`, () => {
-      const { props } = setup();
-      const newProps = {
-        ...props,
-        extended: false
-      }
-      const wrapper = shallow(
-        <Container {...newProps}>
-          <div className="testClass"></div>
-        </Container>
-       );
+  it(`should render self and subcomponents with 
+    not extended container`, () => {
+    const { props } = setup();
+    const newProps = {
+      ...props,
+      extended: false
+    }
+    const wrapper = shallow(
+      <Container {...newProps}>
+        <div className="testClass"></div>
+      </Container>
+      );
 
-      expect(wrapper).toMatchSnapshot();
-    });
+    expect(wrapper).toMatchSnapshot();
+  });
 
-    it('should call renameCategory', () => {
-      const { wrapper, props } = setup();
-      const newTitle = 'new title';
+  it('should call renameCategory', () => {
+    const { wrapper, props } = setup();
+    const newTitle = 'new title';
 
-      window.prompt = jest.fn(() => newTitle);
-      wrapper.find(Button).at(0).prop('onClick')();
+    window.prompt = jest.fn(() => newTitle);
+    wrapper.find(Button).at(0).prop('onClick')();
 
-      expect(props.renameCategory)
-        .toBeCalledWith(props.id, newTitle);
-    });
-    
-    it('should prevent renameCategory call', () => {
-      const { wrapper, props } = setup();
+    expect(props.renameCategory)
+      .toBeCalledWith(props.id, newTitle);
+  });
+  
+  it('should prevent renameCategory call', () => {
+    const { wrapper, props } = setup();
 
-      window.prompt = jest.fn(() => '');
-      wrapper.find(Button).at(0).prop('onClick')();
+    window.prompt = jest.fn(() => '');
+    wrapper.find(Button).at(0).prop('onClick')();
 
-      expect(props.renameCategory)
-        .not
-        .toBeCalled();
-    });
-    
-    it('should call addNestedCategory', () => {
-      const { wrapper, props } = setup();
-      const newTitle = 'new title';
+    expect(props.renameCategory)
+      .not
+      .toBeCalled();
+  });
+  
+  it('should call addNestedCategory', () => {
+    const { wrapper, props } = setup();
+    const newTitle = 'new title';
 
-      window.prompt = jest.fn(() => newTitle);
-      wrapper.find(Button).at(2).prop('onClick')();
+    window.prompt = jest.fn(() => newTitle);
+    wrapper.find(Button).at(2).prop('onClick')();
 
-      expect(props.addNestedCategory)
-        .toBeCalledWith(props.id, newTitle);
-    });
+    expect(props.addNestedCategory)
+      .toBeCalledWith(props.id, newTitle);
+  });
 
-    it('should prevent addNestedCategory call', () => {
-      const { wrapper, props } = setup();
+  it('should prevent addNestedCategory call', () => {
+    const { wrapper, props } = setup();
 
-      window.prompt = jest.fn(() => '');
-      wrapper.find(Button).at(2).prop('onClick')();
+    window.prompt = jest.fn(() => '');
+    wrapper.find(Button).at(2).prop('onClick')();
 
-      expect(props.addNestedCategory)
-        .not
-        .toBeCalled();
-    });
-    
-    it('should call deleteCategory and getTasks', () => {
-      const { wrapper, props } = setup();
+    expect(props.addNestedCategory)
+      .not
+      .toBeCalled();
+  });
+  
+  it('should call deleteCategory and getTasks', () => {
+    const { wrapper, props } = setup();
 
-      window.confirm = jest.fn(() => true);
-      wrapper.find(Button).at(1).prop('onClick')();
+    window.confirm = jest.fn(() => true);
+    wrapper.find(Button).at(1).prop('onClick')();
 
-      expect(props.deleteCategory)
-        .toBeCalledWith(props.id);
-      expect(props.getTasks)
-        .toBeCalledWith(null);
-    });
-    
-    it('should prevent deleteCategory call', () => {
-      const { wrapper, props } = setup();
+    expect(props.deleteCategory)
+      .toBeCalledWith(props.id);
+    expect(props.getTasks)
+      .toBeCalledWith(null);
+  });
+  
+  it('should prevent deleteCategory call', () => {
+    const { wrapper, props } = setup();
 
-      window.confirm = jest.fn(() => false);
-      wrapper.find(Button).at(1).prop('onClick')();
+    window.confirm = jest.fn(() => false);
+    wrapper.find(Button).at(1).prop('onClick')();
 
-      expect(props.deleteCategory)
-        .not
-        .toBeCalled();
-    });
-    
-    it('should prevent getTasks call', () => {
-      const { props } = setup();
-      const newProps = {
-        ...props,
-        id: '41'
-      };
-      const wrapper = shallow(<Container {...newProps}></Container>);
+    expect(props.deleteCategory)
+      .not
+      .toBeCalled();
+  });
+  
+  it('should prevent getTasks call', () => {
+    const { props } = setup();
+    const newProps = {
+      ...props,
+      id: 41
+    };
+    const wrapper = shallow(<Container {...newProps}></Container>);
 
-      window.confirm = jest.fn(() => true);
-      wrapper.find(Button).at(1).prop('onClick')();
+    window.confirm = jest.fn(() => true);
+    wrapper.find(Button).at(1).prop('onClick')();
 
-      expect(props.getTasks)
-        .not
-        .toBeCalled();
-    });
+    expect(props.getTasks)
+      .toBeCalledWith(newProps.id);
   });
 });

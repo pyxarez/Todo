@@ -18,11 +18,9 @@ const setup = () => {
   }
 }
 
-describe('components', () => {
-  describe('Task', () => {
-    it('should render self', () => {
-      const { wrapper } = setup();
-      expect(wrapper).toMatchSnapshot();
-    });
+describe('Components :: Task', () => {
+  it('should render self', () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,4 +1,4 @@
-exports[`containers EditTaskContainer should call saveTaskChanges and browserHistory.goBack 1`] = `
+exports[`Containers :: EditTaskContainer should call saveTaskChanges and browserHistory.goBack 1`] = `
 <EditTaskContainer
   categoryId={0}
   saveTaskChanges={[Function]}
@@ -45,7 +45,7 @@ exports[`containers EditTaskContainer should call saveTaskChanges and browserHis
 </EditTaskContainer>
 `;
 
-exports[`containers EditTaskContainer should render self and subcomponents 1`] = `
+exports[`Containers :: EditTaskContainer should render self and subcomponents 1`] = `
 <EditTask
   onCancel={[Function]}
   onSave={[Function]}>

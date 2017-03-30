@@ -19,65 +19,70 @@ const setup = () => {
   }
 }
 
-describe('components', () => {
-  describe('TextBox', () => {
-    it('should render self', () => {
-      const { wrapper } = setup();
-      expect(wrapper).toMatchSnapshot();
+describe('Components :: TextBox', () => {
+  it('should render self', () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should call onClick prop through the handleKeyPress call', () => {
+    const { wrapper, props } = setup();
+    const value = 'lol';
+
+    const input = wrapper.find('input');
+    input.node.value = value;
+    input.simulate('keypress', {
+      key: 'Enter'
     });
 
-    it('should call handleKeyPress', () => {
-      const { wrapper, props } = setup();
-      expect(wrapper).toMatchSnapshot();
+    expect(props.onClick)
+      .toBeCalledWith(value);
+  });
 
-      const input = wrapper.find('input');
-      input.node.value = 'lol';
-      input.simulate('keypress', {
-        key: 'Enter'
-      });
+  it('should clear input after successful onClick call', () => {
+    const { wrapper, props } = setup();
+    const value = 'lol';
 
-      expect(props.onClick).toBeCalled();
-      expect(wrapper).toMatchSnapshot();
+    const input = wrapper.find('input');
+    input.node.value = value;
+ 
+    const button = wrapper.find('button');
+    button.simulate('click');
+    
+    expect(input.node.value).toBe('');
+  });
+
+  it('should call handleKeyPress with non-enter key', () => {
+    const { wrapper, props } = setup();
+
+    const input = wrapper.find('input');
+    input.simulate('keypress', {
+      key: 'e'
     });
 
-    it('should call handleKeyPress with non-enter key', () => {
-      const { wrapper, props } = setup();
-      expect(wrapper).toMatchSnapshot();
+    expect(props.onClick).not.toBeCalled();
+  });
 
-      const input = wrapper.find('input');
-      input.simulate('keypress', {
-        key: 'e'
-      });
+  it('should call onClick prop through the handleClick call,', () => {
+    const { wrapper, props } = setup();
+    const value = 'Vassa';
 
-      expect(props.onClick).not.toBeCalled();
-      expect(wrapper).toMatchSnapshot();
-    });
+    const input = wrapper.find('input');
+    input.node.value = value;
 
-    it('should call handleClick', () => {
-      const { wrapper, props } = setup();
-      expect(wrapper).toMatchSnapshot();
+    const button = wrapper.find('button');
+    button.simulate('click');
 
-      const input = wrapper.find('input');
-      input.node.value = 'Vassa';
+    expect(props.onClick).toBeCalledWith(value);
+  });
 
-      expect(wrapper).toMatchSnapshot();
+  it('should call handleClick with empty input', () => {
+    const { wrapper, props } = setup();
+    window.alert = jest.fn();
+    
+    const button = wrapper.find('button');
+    button.simulate('click');
 
-      const button = wrapper.find('button');
-      button.simulate('click');
-
-      expect(props.onClick).toBeCalled();
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should call handleClick with empty input', () => {
-      const { wrapper, props } = setup();
-      expect(wrapper).toMatchSnapshot();
-
-      const button = wrapper.find('button');
-      button.simulate('click');
-
-      expect(props.onClick).not.toBeCalled();
-      expect(wrapper).toMatchSnapshot();
-    });
+    expect(window.alert).toBeCalled();
   });
 });

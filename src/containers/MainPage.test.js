@@ -6,7 +6,9 @@ import { MainPageContainer } from './MainPage';
 const setup = () => {
   const props = {
     params: {
-      id: '0'
+      id: '0',
+      category: 'vassa',
+      filter: 'allah'
     },
     addCategory: () => {},
     getProgress: jest.fn(),
@@ -17,26 +19,23 @@ const setup = () => {
     showDone: true
   };
   const wrapper = shallow(<MainPageContainer {...props} />);
-
   return { 
     props,
     wrapper
   }
 };
 
-describe('containers', () => {
-  describe('MainPageContainer', () => {
-    it('should render self and subcomponents', () => {
-      const { wrapper } = setup();
-      
-      expect(wrapper).toMatchSnapshot();
-    });
+describe('Containers :: MainPageContainer', () => {
+  it('should render self and subcomponents', () => {
+    const { wrapper } = setup();
+    
+    expect(wrapper).toMatchSnapshot();
+  });
 
-    it('should call getProgress on component mount', () => {
-      const { wrapper, props } = setup();
-      wrapper.instance().componentDidMount();
+  it('should call getProgress on component mount', () => {
+    const { wrapper, props } = setup();
+    wrapper.instance().componentDidMount();
 
-      expect(props.getProgress).toBeCalled();
-    });
+    expect(props.getProgress).toBeCalled();
   });
 });

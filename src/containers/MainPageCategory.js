@@ -6,8 +6,9 @@ import {
   addNestedCategory,
   deleteCategory,
   renameCategory
-} from '../actions/CategoryActions';
-import { getTasks } from '../actions/TaskListActions';
+} from '../store/actions/CategoryActions';
+import { getTasks } from '../store/actions/TaskListActions';
+import { getProgress } from '../store/actions/ProgressActions';
 
 import Button from '../components/Button';
 import Category from '../components/Category';
@@ -70,8 +71,11 @@ export class Container extends Component {
     if (!confirm("Are you sure about this?")) return;
 
     deleteCategory(id);
+    getProgress();
     if (currentCategoryId === id) {
       getTasks(null);
+    } else {
+      getTasks(id);
     }
   }
 
@@ -90,8 +94,7 @@ export class Container extends Component {
         <Category id={id} title={title} onExtend={getChildrenCount(children) > 0 && onExtend}>
           <Button
             type="edit"
-            onClick={this.handleRenameCategoryClick}
-            style={{ marginLeft: '10px', marginRight: 'auto'}}/>
+            onClick={this.handleRenameCategoryClick}/>
           <Button
             type="delete"
             onClick={this.handleDeleteCategoryClick}/>

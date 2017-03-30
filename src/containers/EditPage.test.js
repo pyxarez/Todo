@@ -34,18 +34,23 @@ const setup = () => {
   }
 };
 
-describe('containers', () => {
-  describe('EditPageContainer', () => {
-    it('should render self', () => {
-      const { wrapper } = setup();
-      expect(wrapper).toMatchSnapshot();
-    });
+describe('Containers :: EditPageContainer', () => {
+  it('should render self', () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
+  });
 
-    it('should render NotFoundPage for lack of requested task', () => {
-      const { props } = setup();
-      props.params.taskId = '3';
-      const wrapper = shallow(<EditPageContainer {...props}/>);
-      expect(wrapper).toMatchSnapshot();
-    });
+  it('should render NotFoundPage for lack of requested task', () => {
+    const { props } = setup();
+    const newProps = {
+      ...props,
+      params: {
+        ...props.params,
+        taskId: '3'
+      }
+    }
+    const wrapper = shallow(<EditPageContainer {...newProps}/>);
+    
+    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -8,7 +8,7 @@ const setup = () => {
     title: 'Todo'
   };
 
-  const enzymeWrapper = shallow(
+  const wrapper = shallow(
     <Header {...props}>
       <div className="testClass" />
     </Header>
@@ -16,15 +16,13 @@ const setup = () => {
 
   return {
     props,
-    enzymeWrapper
+    wrapper
   }
 };
 
-describe('components', () => {
-  describe('Header', () => {
-    it('should render self and subcomponents', () => {
-      const { enzymeWrapper } = setup();
-      expect(enzymeWrapper).toMatchSnapshot();
-    });
+describe('Components :: Header', () => {
+  it('should render self and subcomponents', () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
   });
 });

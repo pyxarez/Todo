@@ -2,7 +2,7 @@ import {
   GET_PROGRESS
 } from '../constants/Progress';
 
-import * as api from '../api/api';
+import * as api from '../../api/api';
 
 const gettingProgressSuccess = (progress) => {
   return {

@@ -1,4 +1,6 @@
-exports[`components EditTask should render self and subcomponents 1`] = `
+exports[`Components :: EditTask should not render children 1`] = `[Function]`;
+
+exports[`Components :: EditTask should render self and subcomponents 1`] = `
 <div
   className="my-editTask-component">
   <div

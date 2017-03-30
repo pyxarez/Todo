@@ -14,27 +14,24 @@ const setup = () => {
   }
 };
 
-describe('containers', () => {
-  describe('higher-order component ShareExtendState', () => {
-    it('should render self and subcomponents', () => {
-      const { wrapper } = setup();
-      
-      expect(wrapper).toMatchSnapshot();
-    });
+describe('Containers :: ShareExtendState', () => {
+  it('should render self and subcomponents', () => {
+    const { wrapper } = setup();
     
+    expect(wrapper).toMatchSnapshot();
+  });
 
-    it('should change state by calling handleExtendClick', () => {
-      const { wrapper } = setup();
+  it('should change state by calling handleExtendClick', () => {
+    const { wrapper } = setup();
 
-      wrapper.find(TestComponent).prop('onExtend')();
-      expect(wrapper.state().extended).toBe(true);
-    });
+    wrapper.find(TestComponent).prop('onExtend')();
+    expect(wrapper.state().extended).toBe(true);
+  });
 
-    it('should test returning value of getChildrenCount', () => {
-      const { wrapper } = setup();
+  it('should test returning value of getChildrenCount', () => {
+    const { wrapper } = setup();
 
-      const testChildren = <div className="i-am-children"></div>;
-      expect(wrapper.instance().getChildrenCount(testChildren)).toBe(1);
-    });
+    const testChildren = <div className="i-am-children"></div>;
+    expect(wrapper.instance().getChildrenCount(testChildren)).toBe(1);
   });
 });

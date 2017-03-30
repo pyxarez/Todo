@@ -12,7 +12,7 @@ const setup = () => {
     onExtend: () => {}
   };
 
-  const enzymeWrapper = shallow(
+  const wrapper = shallow(
     <Category {...props}>
       <div className='test-class'/>
     </Category>
@@ -20,15 +20,35 @@ const setup = () => {
 
   return {
     props,
-    enzymeWrapper
+    wrapper
   }
 };
 
-describe('components', () => {
-  describe('Category', () => {
-    it('should render self and subcomponents', () => {
-      const { enzymeWrapper } = setup();
-      expect(enzymeWrapper).toMatchSnapshot();
-    });
+describe('Components :: Category', () => {
+  it('should render self and subcomponents', () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should not render children', () => {
+    const { props } = setup();
+    const wrapper = shallow(<Category {...props}/>);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should not render Button component', () => {
+    const { props } = setup();
+    const newProps = {
+      ...props,
+      onExtend: false
+    };
+    const wrapper = shallow(
+      <Category {...newProps}>
+        <div className="test-class"></div>
+      </Category>
+     );
+    
+    expect(wrapper).toMatchSnapshot();
   });
 });

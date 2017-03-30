@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addCategory, getCategories } from '../actions/CategoryActions';
-import { getProgress } from '../actions/ProgressActions';
-import { getTasks } from '../actions/TaskListActions';
-import toggleShowDone from '../actions/ShowDoneActions';
+import { addCategory, getCategories } from '../store/actions/CategoryActions';
+import { getProgress } from '../store/actions/ProgressActions';
+import { getTasks } from '../store/actions/TaskListActions';
+import toggleShowDone from '../store/actions/ShowDoneActions';
 
 import { toNumberKeyValues } from '../utils/helpers';
 

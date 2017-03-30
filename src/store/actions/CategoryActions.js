@@ -7,7 +7,7 @@ import {
   CHANGE_TASK_LOCATION
 } from '../constants/Category';
 
-import * as api from '../api/api';
+import * as api from '../../api/api';
 
 const gettingCategoriesSuccess = (categories) => {
   return {

@@ -1,12 +1,13 @@
 import { DataStorage } from '../utils/DataStorage';
 
 const dataStorage = DataStorage.of();
+const throttle = 100;
 
 const getCategories = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve( dataStorage.getCategories() );
-    }, 100);
+    }, throttle);
   });
 };
 
@@ -14,7 +15,7 @@ const addCategory = (title) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve( dataStorage.addNewCategory(title) );
-    }, 100);
+    }, throttle);
   });
 };
 
@@ -25,7 +26,7 @@ const addNestedCategory = (parentCategoryId, title) => {
         reject(`Wrong arguments in ${addNestedCategory.name}`);
       }
       resolve( dataStorage.addNestedCategory(parentCategoryId, title) );
-    }, 100);
+    }, throttle);
   });
 };
 
@@ -33,7 +34,7 @@ const deleteCategory = (categoryId) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve( dataStorage.deleteCategory(categoryId) );
-    }, 100);
+    }, throttle);
   });
 };
 
@@ -41,7 +42,7 @@ const renameCategory = (categoryId, newTitle) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve( dataStorage.renameCategory(categoryId, newTitle) );
-    }, 100);
+    }, throttle);
   });
 };
 
@@ -49,7 +50,7 @@ const getTasks = (categoryId) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve( dataStorage.getTasks(categoryId) );
-    }, 100);
+    }, throttle);
   });
 };
 
@@ -61,7 +62,7 @@ const addTask = (categoryId, title) => {
       taskId === null
       ? reject('Category with this id not found. Please try to pick another one.')
       : resolve(taskId);
-    }, 100);
+    }, throttle);
   });
 };
 
@@ -69,7 +70,7 @@ const checkDone = (categoryId, taskId) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve( dataStorage.checkDone(categoryId, taskId) );
-    }, 100);
+    }, throttle);
   })
 }
 
@@ -77,7 +78,7 @@ const getProgress = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve( dataStorage.getProgress() );
-    }, 100);
+    }, throttle);
   });
 };
 
@@ -85,7 +86,7 @@ const changeTaskLocation = (prevCategoryId, newCategoryId, taskId) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve( dataStorage.changeTaskLocation( prevCategoryId, newCategoryId, taskId) );
-    }, 100);
+    }, throttle);
   });
 };
 
@@ -93,7 +94,7 @@ const saveTaskChanges = (options) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve( dataStorage.saveTaskChanges(options) );
-    }, 100);
+    }, throttle);
   });
 };
 

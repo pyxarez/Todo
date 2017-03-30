@@ -1,4 +1,4 @@
-exports[`containers Sidebar should render self 1`] = `
+exports[`Containers :: Sidebar should render self 1`] = `
 <div
   className="my-sidebar-component">
   <div
@@ -6,7 +6,7 @@ exports[`containers Sidebar should render self 1`] = `
 </div>
 `;
 
-exports[`containers Sidebar should render self and 3 categories 1`] = `
+exports[`Containers :: Sidebar should render self and 3 categories 1`] = `
 <div
   className="my-sidebar-component">
   <div

@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { validateInput } from '../utils/helpers';
 
-import { saveTaskChanges } from '../actions/TaskListActions';
+import { saveTaskChanges } from '../store/actions/TaskListActions';
 
 import EditTask from '../components/EditTask';
 
 export class EditTaskContainer extends Component {
-  static propTypes ={
+  static propTypes = {
     task: PropTypes.shape({
       id: PropTypes.node.isRequired,
       title: PropTypes.string.isRequired,

@@ -1,4 +1,4 @@
-exports[`components TaskList should render self 1`] = `
+exports[`Components :: TaskList should render self 1`] = `
 <div
   className="my-tasklist-component">
   <TextBox

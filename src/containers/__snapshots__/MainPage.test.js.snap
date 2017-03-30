@@ -1,4 +1,4 @@
-exports[`containers MainPageContainer should render self and subcomponents 1`] = `
+exports[`Containers :: MainPageContainer should render self and subcomponents 1`] = `
 <div
   className="my-main-page-component">
   <Header
@@ -9,7 +9,9 @@ exports[`containers MainPageContainer should render self and subcomponents 1`] =
     <Filter
       URLParams={
         Object {
-          "id": "0",
+          "category": "vassa",
+          "filter": "allah",
+          "id": 0,
         }
       } />
     <Progressbar
@@ -30,7 +32,9 @@ exports[`containers MainPageContainer should render self and subcomponents 1`] =
     <Connect(TaskListContainer)
       URLParams={
         Object {
-          "id": "0",
+          "category": "vassa",
+          "filter": "allah",
+          "id": 0,
         }
       }
       showDone={true} />

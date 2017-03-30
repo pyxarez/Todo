@@ -15,4 +15,10 @@
     transform-origin: top;
     transform: scaleY(0);
   }
+
+  .button{
+    &-edit {
+      margin: 0 auto 0 10px;
+    }
+  }
 }

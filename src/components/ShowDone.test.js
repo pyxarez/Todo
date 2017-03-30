@@ -16,11 +16,9 @@ const setup = () => {
   }
 }
 
-describe('components', () => {
-  describe('ShowDone', () => {
-    it('should render self', () => {
-      const { wrapper } = setup();
-      expect(wrapper).toMatchSnapshot();
-    });
+describe('Components :: ShowDone', () => {
+  it('should render self', () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
   });
 });

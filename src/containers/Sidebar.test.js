@@ -35,24 +35,22 @@ const setup = () => {
   }
 };
 
-describe('containers', () => {
-  describe('Sidebar', () => {
-    it('should render self and 3 categories', () => {
-      const { wrapper } = setup();
-      
-      expect(wrapper).toMatchSnapshot();
-    });
+describe('Containers :: Sidebar', () => {
+  it('should render self and 3 categories', () => {
+    const { wrapper } = setup();
     
+    expect(wrapper).toMatchSnapshot();
+  });
+  
 
-    it('should render self', () => {
-      const { props } = setup();
-      const newProps = {
-        ...props,
-        categories: []
-      };
-      const wrapper = shallow(<Sidebar {...newProps}/>);
+  it('should render self', () => {
+    const { props } = setup();
+    const newProps = {
+      ...props,
+      categories: []
+    };
+    const wrapper = shallow(<Sidebar {...newProps}/>);
 
-      expect(wrapper).toMatchSnapshot();
-    });
+    expect(wrapper).toMatchSnapshot();
   });
 });

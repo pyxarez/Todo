@@ -1,4 +1,4 @@
-exports[`components Header should render self and subcomponents 1`] = `
+exports[`Components :: Header should render self and subcomponents 1`] = `
 <header
   className="my-header-component">
   <h1

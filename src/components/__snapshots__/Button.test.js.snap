@@ -1,10 +1,5 @@
-exports[`components Button should render self 1`] = `
+exports[`Component :: Button should render self 1`] = `
 <button
   className="my-button-component button-swap"
-  onClick={[Function]}
-  style={
-    Object {
-      "margin": "0 5px",
-    }
-  } />
+  onClick={[Function]} />
 `;

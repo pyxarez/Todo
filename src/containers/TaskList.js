@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { addTask, getTasks } from '../actions/TaskListActions';
-import { getProgress } from '../actions/ProgressActions';
+import { addTask, getTasks } from '../store/actions/TaskListActions';
+import { getProgress } from '../store/actions/ProgressActions';
 
 import TaskList from '../components/TaskList';
 import TaskContainer from './Task';

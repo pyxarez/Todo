@@ -1,4 +1,4 @@
-exports[`components Task should render self 1`] = `
+exports[`Components :: Task should render self 1`] = `
 <div
   className="my-task-component">
   <input

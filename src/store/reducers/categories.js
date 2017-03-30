@@ -6,7 +6,7 @@ import {
   RENAME_CATEGORY,
 } from '../constants/Category';
 
-import { findTarget, deepClone } from '../utils/helpers';
+import { findTarget, deepClone } from '../../utils/helpers';
 
 const initialState = [];
 

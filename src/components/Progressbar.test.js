@@ -15,11 +15,9 @@ const setup = () => {
   }
 }
 
-describe('components', () => {
-  describe('Progressbar', () => {
-    it('should render self', () => {
-      const { wrapper } = setup();
-      expect(wrapper).toMatchSnapshot();
-    });
+describe('Components :: Progressbar', () => {
+  it('should render self', () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
   });
 });

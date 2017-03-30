@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-import { changeTaskLocation } from '../actions/CategoryActions';
+import { changeTaskLocation } from '../store/actions/CategoryActions';
 
 import Button from '../components/Button';
 import Category from '../components/Category';
@@ -63,8 +63,7 @@ export class Container extends Component {
           {currentCategoryId !== id &&
             <Button
               type="swap"
-              onClick={this.handleChangeTaskLocation}
-              style={{ marginLeft: 'auto' }}/>}
+              onClick={this.handleChangeTaskLocation} />}
         </Category>
         {children &&
           <div className={extended
