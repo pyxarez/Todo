@@ -13,8 +13,8 @@ Task.propTypes = {
 export default function Task({ isDone, title, handleDoneTaskClick, handleEditTaskClick }) {
   return (
     <div className="my-task-component">
-      <input onChange={handleDoneTaskClick} checked={isDone} type="checkbox"/>
-      <h2>{title}</h2>
+      <input className='task-input' onChange={handleDoneTaskClick} checked={isDone} type="checkbox"/>
+      <p className='task-paragraph'>{title}</p>
       <Button onClick={handleEditTaskClick} type="edit" />
     </div>
   );

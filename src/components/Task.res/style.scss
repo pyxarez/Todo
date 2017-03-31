@@ -1,7 +1,31 @@
+@import "./media-queries";
+
+$margin: 5rem;
+
 .my-task-component {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   border: 1px solid black;
   margin-bottom: 3px;
   align-items: center;
+  height: auto;
+
+
+  .task-input {
+    margin-left: $margin;
+
+    @include task-input-mq;
+  }
+
+  .task-paragraph {
+    max-width: 60%;
+    word-wrap: break-word;
+    text-align: center;
+  }
+
+  .my-button-component {
+    margin-right: $margin;
+
+    @include my-task-button-component-mq;
+  }
 }

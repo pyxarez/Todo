@@ -1,15 +1,39 @@
+@import "../../core/queries";
+
 .my-editTask-component {
   display: flex;
   flex-direction: column;
 
   .buttons-container {
+    flex: 0;
     display: flex;
     min-height: 1.7em;
     justify-content: flex-end;
     margin-bottom: 10px;
   }
 
+  .my-button-component {
+    width: auto;
+    height: auto;
+
+    &:first-child {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+    max-width: 29rem;
+    flex: 0 0 1.9rem;
+  }
+
+
   .description {
     resize: none;
+    border-radius: 4px;
+    flex: 1;
+    margin-top: 0.7rem;
   }
 }

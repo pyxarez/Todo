@@ -1,6 +1,6 @@
 export class IdGenerator {
-  constructor() {
-    this.count = 0;
+  constructor(initialCount = 0) {
+    this.count = initialCount;
   }
 
   getCount() {
@@ -17,36 +17,24 @@ export class IdGenerator {
 }
 
 export class Category {
-  constructor(id, title="Buy chicken") {
+  constructor(id, title = "Buy chicken") {
     this.id = id;
     this.title = title;
     this.nested = [];
     this.tasks = [];
   }
-
-  changeTitle(title=this.title) {
-    this.title = title;
-  }
 }
 
 export class Task {
-  constructor(id, title="Find girlfriend") {
+  constructor(id, title = "Find girlfriend") {
     this.id = id
     this.title = title;
     this.isDone = false;
     this.description = "";
   }
-
-  changeTitle(title=this.title) {
-    this.title = title;
-  }
-
-  toggleDone() {
-    this.isDone = !this.isDone;
-  }
 }
 
-class ProgressBar {
+class Progress {
   constructor() {
     this.done = 0;
     this.total = 0;
@@ -74,14 +62,38 @@ class ProgressBar {
 
 export class DataStorage {
   constructor() {
-    this.storage = [];
-    this.progress = new ProgressBar();
-    this._categoryIdGen = new IdGenerator();
-    this._taskIdGen = new IdGenerator();
+    this.initilizeStorage();
   }
 
   static of() {
     return new DataStorage();
+  }
+
+  initilizeStorage() {
+    this.storage = JSON.parse(localStorage.getItem('dataStorage')) || [];
+    this._categoryIdGen = new IdGenerator(JSON.parse(localStorage.getItem('categoriesCounter')));
+    this._taskIdGen = new IdGenerator(JSON.parse(localStorage.getItem('tasksCounter')));
+    this.progress = new Progress();
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem('dataStorage', JSON.stringify(this.storage));
+  }
+
+  updateLocalStorageCategoriesCounter() {
+    localStorage
+      .setItem(
+        'categoriesCounter',
+        JSON.stringify(this._categoryIdGen.getCount())
+      );
+  }
+
+  updateLocalStorageTasksCounter(count) {
+    localStorage
+      .setItem(
+        'tasksCounter',
+        JSON.stringify(this._taskIdGen.getCount())
+      );
   }
 
   _prepareCategories(categories = this.storage) {
@@ -122,12 +134,14 @@ export class DataStorage {
   getProgress() {
     this.progress.resetData();
     this._countDone();
+    
     return this.progress.getProgress();
   }
 
   _findTarget(target, storage=this.storage) {
     for (var i = 0; i < storage.length; i++) {
       const storageElem = storage[i];
+      
       if (storageElem.id === +target) {
         const returningBundle = {
           category: storageElem,
@@ -135,9 +149,9 @@ export class DataStorage {
           index: i
         }
         return returningBundle;
-      }
-      else if (storageElem.nested.length > 0) {
+      } else if (storageElem.nested.length > 0) {
         const returningBundle = this._findTarget(target, storageElem.nested);
+        
         if (Object.keys(returningBundle).length === 3) return returningBundle;
       }
     }
@@ -147,7 +161,9 @@ export class DataStorage {
 
   renameCategory(categoryId, newTitle) {
     const { category } = this._findTarget(categoryId);
-    category.changeTitle(newTitle);
+    
+    category.title = newTitle;
+    this.updateLocalStorage();
 
     return categoryId;
   }
@@ -155,20 +171,28 @@ export class DataStorage {
   addNewCategory(title, storage=this.storage) {
     if (this.getCategories().length === 0) this._categoryIdGen.reset();
     const id = this._categoryIdGen.getNextId();
+    
     storage.unshift(new Category(id, title));
+    this.updateLocalStorage();
+    this.updateLocalStorageCategoriesCounter();
 
     return id;
   }
 
   deleteCategory(categoryId) {
     const { storage, index } = this._findTarget(categoryId);
+    
     storage.splice(index, 1);
-
+    this.updateLocalStorage();
+    
     return categoryId;
   }
 
   addNestedCategory(parentCategoryId, title) {
     const { category } = this._findTarget(parentCategoryId);
+    
+    this.updateLocalStorage();
+    
     return this.addNewCategory(title, category.nested);
   }
 
@@ -180,6 +204,8 @@ export class DataStorage {
     }
 
     category.tasks.unshift(new Task(taskId, title));
+    this.updateLocalStorage();
+    this.updateLocalStorageTasksCounter();
 
     return taskId;
   }
@@ -194,8 +220,12 @@ export class DataStorage {
   checkDone(categoryId, targetTaskId) {
     const tasks = this.getTasks(categoryId);
 
-    tasks.find(task => task.id === targetTaskId)
-            .toggleDone();
+    tasks.forEach(task => {
+      if (task.id === targetTaskId) {
+        task.isDone = !task.isDone;
+      }
+    });
+    this.updateLocalStorage();
 
     return targetTaskId;
   }
@@ -213,17 +243,21 @@ export class DataStorage {
     targetTask.title = title;
     targetTask.isDone = isDone;
     targetTask.description = description;
+    
+    this.updateLocalStorage();
 
     return targetTask;
   }
 
   changeTaskLocation(prevLocationId, targetLocationId, taskId) {
-    const { category: prevCategory } = this._findTarget(+prevLocationId);
-    const { category: targetCategory } = this._findTarget(+targetLocationId);
-
-    const taskIndex = prevCategory.tasks.findIndex((task) => task.id === +taskId);
-    const changingTask = prevCategory.tasks.splice(taskIndex, 1);
-    targetCategory.tasks.unshift(...changingTask);
+    const { category: prevCategory } = this._findTarget(prevLocationId);
+    const { category: targetCategory } = this._findTarget(targetLocationId);
+    
+    const taskIndex = prevCategory.tasks.findIndex(task => task.id === taskId);
+    const changedTask = prevCategory.tasks.splice(taskIndex, 1);
+    targetCategory.tasks.unshift(...changedTask);
+    
+    this.updateLocalStorage();
 
     return targetCategory;
   }

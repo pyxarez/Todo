@@ -2,11 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ReactDOM from 'react-dom';
+
 import { validateInput } from '../utils/helpers';
 
 import { saveTaskChanges } from '../store/actions/TaskListActions';
 
 import EditTask from '../components/EditTask';
+import TextInput from '../components/TextInput';
+import CheckBoxInput from '../components/CheckBoxInput';
 
 export class EditTaskContainer extends Component {
   static propTypes = {
@@ -21,8 +25,11 @@ export class EditTaskContainer extends Component {
   }
 
   onSave = () => {
-    const title = this.titleInput.value;
-    const isDone = this.doneCheckBox.checked;
+    const textInput = ReactDOM.findDOMNode(this.titleInput);
+    const checkboxInput = ReactDOM.findDOMNode(this.doneCheckBox).firstChild;
+
+    const title = textInput.value;
+    const isDone = checkboxInput.checked;
     const description = this.taskDescription.value;
 
     if (!validateInput(title)) {
@@ -55,9 +62,13 @@ export class EditTaskContainer extends Component {
 
     return (
       <EditTask onSave={this.onSave} onCancel={this.handleCancelClick}>
-        <div>
-          <input ref={(titleInput) => {this.titleInput = titleInput}} type="text" defaultValue={title}/>
-          <input ref={(doneCheckBox) => {this.doneCheckBox = doneCheckBox}} type="checkbox" defaultChecked={isDone}/>
+        <div className='wrapper'>
+          <TextInput
+            ref={(titleInput) => {this.titleInput = titleInput}}
+            defaultValue={title}/>
+          <CheckBoxInput
+            ref={(doneCheckBox) => {this.doneCheckBox = doneCheckBox}}
+            defaultChecked={isDone}/>
         </div>
         <textarea
           ref={(taskDescription) => {this.taskDescription = taskDescription}}

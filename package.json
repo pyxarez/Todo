@@ -83,7 +83,7 @@
     "testPathIgnorePatterns": [
       "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
     ],
-    
+
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
@@ -103,5 +103,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "homepage": "."
 }

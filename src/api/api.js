@@ -1,7 +1,7 @@
 import { DataStorage } from '../utils/DataStorage';
 
 const dataStorage = DataStorage.of();
-const throttle = 100;
+const throttle = 0;
 
 const getCategories = () => {
   return new Promise((resolve, reject) => {

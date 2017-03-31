@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+import Button from './Button';
+import TextInput from './TextInput';
+
+import { validateInput } from '../utils/helpers';
 
 import './TextBox.res/style.css';
 
@@ -8,19 +14,20 @@ export default class TextBox extends Component {
     onClick: React.PropTypes.func.isRequired,
     placeholder: React.PropTypes.string
   }
-  
-  static defaultProps = {
-    isFocused: false
-  }
 
   handleClick = () => {
-    const value = this.textInput.value;
-    if (value.trim() === '') {
+    const input = ReactDOM.findDOMNode(this.textInput);
+    const value = input.value;
+
+    if (!validateInput(value)) {
       alert("Type something please");
       return;
+    } else if (value.length > 30) {
+      alert("Too much characters");
+      return;
     }
-    
-    this.textInput.value = '';
+
+    input.value = '';
     this.props.onClick(value);
   }
 
@@ -36,14 +43,12 @@ export default class TextBox extends Component {
 
     return (
       <div className="my-textbox-component">
-        <input
-          autoFocus={isFocused}
+        <TextInput
           onKeyPress={this.handleKeyPress}
-          ref={(input) => { this.textInput = input }}
-          className="textbox-input"
-          type="text"
+          ref={input => { this.textInput = input }}
+          isFocused={isFocused}
           placeholder={placeholder}/>
-        <button onClick={this.handleClick}>Add</button>
+        <Button value='Add' onClick={this.handleClick}/>
       </div>
     );
   }

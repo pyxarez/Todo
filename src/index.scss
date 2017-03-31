@@ -9,29 +9,36 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  padding: 0 20px 0 20px;
-}
 
 body, html {
   height: 100%;
+}
+
+html {
+  zoom: 1.25;
+}
+
+body {
+  margin: 0;
+  font-size: $font-size-standart;
 }
 
 #root {
   height: 100%;
 }
 
-body, input, button {
+body, input, button, textarea {
   font-family: $font-stack;
   color: $main-color;
+  outline: none;
 }
 
 button:hover, input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
-input[type="text"]:focus, input[type="textarea"]:focus {
+input[type="text"]:focus, textarea:focus {
+  outline: none;
   box-shadow: 0 0 1px 1px $second-color;
 }
 
@@ -39,5 +46,3 @@ a {
   color: $second-color;
   text-decoration: none;
 }
-
-
