@@ -1,7 +1,24 @@
+$margin: 5rem;
+
 .my-task-component {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   border: 1px solid black;
   margin-bottom: 3px;
   align-items: center;
+  height: auto;
+
+  input {
+    margin-left: $margin;
+  }
+
+  p {
+    max-width: 60%;
+    word-wrap: break-word;
+    text-align: center;
+  }
+
+  .my-button-component {
+    margin-right: $margin;
+  }
 }

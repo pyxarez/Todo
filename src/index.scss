@@ -11,7 +11,6 @@
 
 body {
   margin: 0;
-  padding: 0 20px 0 20px;
 }
 
 body, html {
@@ -25,6 +24,7 @@ body, html {
 body, input, button {
   font-family: $font-stack;
   color: $main-color;
+  outline: none;
 }
 
 button:hover, input[type="checkbox"]:hover {

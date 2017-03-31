@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Button from './Button';
+
+import { validateInput } from '../utils/helpers';
 
 import './TextBox.res/style.css';
 
@@ -15,8 +18,11 @@ export default class TextBox extends Component {
 
   handleClick = () => {
     const value = this.textInput.value;
-    if (value.trim() === '') {
+    if (!validateInput(value)) {
       alert("Type something please");
+      return;
+    } else if (value.length > 30) {
+      alert("Too much characters");
       return;
     }
     
@@ -43,7 +49,7 @@ export default class TextBox extends Component {
           className="textbox-input"
           type="text"
           placeholder={placeholder}/>
-        <button onClick={this.handleClick}>Add</button>
+          <Button value='Add' onClick={this.handleClick}/>
       </div>
     );
   }

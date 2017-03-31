@@ -14,7 +14,7 @@ export default function Task({ isDone, title, handleDoneTaskClick, handleEditTas
   return (
     <div className="my-task-component">
       <input onChange={handleDoneTaskClick} checked={isDone} type="checkbox"/>
-      <h2>{title}</h2>
+      <p>{title}</p>
       <Button onClick={handleEditTaskClick} type="edit" />
     </div>
   );
