@@ -1,10 +1,20 @@
+@import "../../core/queries";
+
 .my-tasklist-component {
   display: flex;
   flex-direction: column;
 
-
   .my-textbox-component {
     margin-left: auto;
+    
+    @include mq-780 {
+      margin-left: 1rem;
+    }
+
+    @include mq-641 {
+      margin-left: 0;
+    }
+
   }
 
   .tasklist {
@@ -12,4 +22,3 @@
     overflow-y: scroll;
   }
 }
-

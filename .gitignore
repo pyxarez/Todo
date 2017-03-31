@@ -16,5 +16,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 src/**/*.css
+.firebaserc
+firebase.json
+database.rules.json
+functions
+static.json
 .idea
 .vscode

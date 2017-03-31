@@ -1,4 +1,5 @@
 @import '../../core/variables';
+@import './media-queries.scss';
 
 .my-progressbar-component {
   border: 1px solid $main-color;
@@ -6,10 +7,16 @@
   height: 15px;
   width: 100%;
 
+  @include my-progressbar-component-mq;
+
   .progressbar__state {
     border-radius: 4px;
     height: 13px;
     width: 0;
-    background: $progressbar-color;
+    background: $third-color;
+  }
+
+  .progressbar__state_full {
+    background-color: $second-color;
   }
 }

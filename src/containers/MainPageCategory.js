@@ -28,7 +28,7 @@ export class Container extends Component {
     extended: PropTypes.bool.isRequired,
     onExtend: PropTypes.func.isRequired,
     getChildrenCount: PropTypes.func.isRequired,
-    currentCategoryId: PropTypes.number.isRequired,
+    currentCategoryId: PropTypes.number,
     children: PropTypes.oneOfType(
       [
         PropTypes.arrayOf(PropTypes.element.isRequired),

@@ -1,0 +1,20 @@
+@import "../../core/variables";
+
+$mobile-margin: 1rem;
+
+@mixin task-input-mq {
+  @media only screen and (max-width: $query-641px) {
+    & {
+        margin-left: $mobile-margin;
+    }
+  }
+}
+
+
+@mixin my-task-button-component-mq {
+  @media only screen and (max-width: $query-641px) {
+    & {
+      margin-right: $mobile-margin;
+    }
+  }
+}
