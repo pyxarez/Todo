@@ -34,8 +34,8 @@ const tasks = (state = initialState, action) => {
     case CHECK_DONE:
       return state.map(task => {
         return task.id === action.payload.taskId
-        ? { ...task, isDone: !task.isDone}
-        : task;
+          ? { ...task, isDone: !task.isDone}
+          : task;
       });
     case CHANGE_TASK_LOCATION:
       return state.filter(task => {
@@ -46,8 +46,8 @@ const tasks = (state = initialState, action) => {
 
       return state.map(task => {
         return task.id === newTaskProps.id
-        ? { ...newTaskProps }
-        : task;
+          ? { ...newTaskProps }
+          : task;
       });
     default:
       return state;

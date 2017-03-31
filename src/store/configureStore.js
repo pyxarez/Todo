@@ -10,5 +10,5 @@ export default (initialState) => {
   return createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk,  localStorageCaller));
+    applyMiddleware(thunk, localStorageCaller));
 }

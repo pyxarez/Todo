@@ -39,6 +39,14 @@ export class TaskListContainer extends Component {
       .catch(e => { alert(e); });
   }
 
+  componentDidMount = () => {
+    const { id } = this.props.URLParams;
+    
+    if (typeof id !== 'undefined') {
+      this.props.getTasks(id);
+    }
+  }
+
   componentWillReceiveProps = (nextProps) => {
     const nextId = nextProps.URLParams.id;
     const prevId = this.props.URLParams.id
