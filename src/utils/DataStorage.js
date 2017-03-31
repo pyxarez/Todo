@@ -72,7 +72,7 @@ export class DataStorage {
   initilizeStorage() {
     this.storage = JSON.parse(localStorage.getItem('dataStorage')) || [];
     this._categoryIdGen = new IdGenerator(JSON.parse(localStorage.getItem('categoriesCounter')));
-    this._taskIdGen = new IdGenerator(JSON.parse(localStorage.getItem('tasksCounterg')));
+    this._taskIdGen = new IdGenerator(JSON.parse(localStorage.getItem('tasksCounter')));
     this.progress = new Progress();
   }
 
@@ -91,7 +91,7 @@ export class DataStorage {
   updateLocalStorageTasksCounter(count) {
     localStorage
       .setItem(
-        'tasksCounterg',
+        'tasksCounter',
         JSON.stringify(this._taskIdGen.getCount())
       );
   }
