@@ -40,6 +40,10 @@ a {
   text-decoration: none;
 }
 
+.progressbar__state_full {
+  background: rgb(37,163,5) !important;
+}
+
 @media only screen and (max-width: 641px) {
   .main {
     flex-direction: column !important;
