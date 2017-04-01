@@ -1,0 +1,9 @@
+exports[`Components :: ShowDone should render self 1`] = `
+<label
+  className="my-showdone-component">
+  <input
+    onChange={[Function]}
+    type="checkbox" />
+  Show done
+</label>
+`;

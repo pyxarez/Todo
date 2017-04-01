@@ -1,0 +1,15 @@
+.my-editTask-component {
+  display: flex;
+  flex-direction: column;
+
+  .buttons-container {
+    display: flex;
+    min-height: 1.7em;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    resize: none;
+  }
+}

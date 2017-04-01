@@ -1,0 +1,9 @@
+exports[`Containers :: TaskListContainer should render component without done tasks 1`] = `
+<TaskList
+  onClick={[Function]} />
+`;
+
+exports[`Containers :: TaskListContainer should render self and subcomponents 1`] = `
+<TaskList
+  onClick={[Function]} />
+`;

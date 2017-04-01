@@ -1,0 +1,45 @@
+exports[`Components :: Category should not render Button component 1`] = `
+<div
+  className="my-category-component">
+  <Link
+    onlyActiveOnIndex={false}
+    style={Object {}}
+    to="/main/0/Films/">
+    Films
+  </Link>
+  <div
+    className="test-class" />
+</div>
+`;
+
+exports[`Components :: Category should not render children 1`] = `
+<div
+  className="my-category-component">
+  <Button
+    onClick={[Function]}
+    type="extend" />
+  <Link
+    onlyActiveOnIndex={false}
+    style={Object {}}
+    to="/main/0/Films/">
+    Films
+  </Link>
+</div>
+`;
+
+exports[`Components :: Category should render self and subcomponents 1`] = `
+<div
+  className="my-category-component">
+  <Button
+    onClick={[Function]}
+    type="extend" />
+  <Link
+    onlyActiveOnIndex={false}
+    style={Object {}}
+    to="/main/0/Films/">
+    Films
+  </Link>
+  <div
+    className="test-class" />
+</div>
+`;

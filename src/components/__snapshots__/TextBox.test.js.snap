@@ -1,0 +1,20 @@
+exports[`Components :: TextBox should render self 1`] = `
+<TextBox
+  isFocused={true}
+  onClick={[Function]}
+  placeholder="Kaaarl">
+  <div
+    className="my-textbox-component">
+    <input
+      autoFocus={true}
+      className="textbox-input"
+      onKeyPress={[Function]}
+      placeholder="Kaaarl"
+      type="text" />
+    <button
+      onClick={[Function]}>
+      Add
+    </button>
+  </div>
+</TextBox>
+`;

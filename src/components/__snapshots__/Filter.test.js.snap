@@ -1,0 +1,26 @@
+exports[`Component :: Filter should render self and subcomponents 1`] = `
+<Filter
+  URLParams={
+    Object {
+      "category": "Films",
+      "filter": "54312",
+      "id": 0,
+    }
+  }>
+  <div
+    className="my-filter-component">
+    <input
+      className="filter__input"
+      onChange={[Function]}
+      placeholder="Search"
+      type="text" />
+    <Button
+      onClick={[Function]}
+      type="clear">
+      <button
+        className="my-button-component button-clear"
+        onClick={[Function]} />
+    </Button>
+  </div>
+</Filter>
+`;
