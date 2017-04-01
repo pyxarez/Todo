@@ -1,10 +1,9 @@
 .my-sidebar-component {
   display: flex;
   flex-direction: column;
-
-  .sidebar {
-    flex: 1;
-    overflow-y: scroll;
-  }
 }
 
+.sidebar {
+  flex: 1;
+  overflow-y: scroll;
+}
