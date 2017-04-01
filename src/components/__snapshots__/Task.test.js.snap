@@ -1,0 +1,15 @@
+exports[`Components :: Task should render self 1`] = `
+<div
+  className="my-task-component">
+  <input
+    checked={true}
+    onChange={[Function]}
+    type="checkbox" />
+  <h2>
+    Vassa
+  </h2>
+  <Button
+    onClick={[Function]}
+    type="edit" />
+</div>
+`;

@@ -1,5 +1,56 @@
+@import './core/variables';
+
+@font-face {
+  font-family: KristenITC;
+  src: url("./kristen-itc.TTF");
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+body, input, button {
+  font-family: $font-stack;
+  color: $main-color;
+  outline: none;
+}
+
+button:hover, input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+
+input[type="text"]:focus, input[type="textarea"]:focus {
+  box-shadow: 0 0 1px 1px $second-color;
+}
+
+a {
+  color: $second-color;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 641px) {
+  .main {
+    flex-direction: column !important;
+  }
+
+  .my-tasklist-component .my-textbox-component {
+      margin-left: 0 !important;
+  }
+
+  .my-main-page-component .main__sidebar, .my-tasklist-component {
+    max-width: 100% !important;
+  }
+
 }

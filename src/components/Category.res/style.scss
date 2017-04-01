@@ -1,0 +1,16 @@
+@import '../../core/variables';
+
+.my-category-component {
+  display: flex;
+  justify-content: flex-start;
+  color: $second-color;
+  border: 1px solid $main-color;
+  padding: 3px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+  cursor: default;
+
+  .my-button-component {
+    margin: 0 10px 0 0;
+  }
+}

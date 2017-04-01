@@ -1,0 +1,12 @@
+@import '../../core/variables';
+
+.my-header-component {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+
+  .title {
+    flex-grow: 3;
+  }
+}

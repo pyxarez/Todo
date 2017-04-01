@@ -1,0 +1,5 @@
+exports[`Component :: Button should render self 1`] = `
+<button
+  className="my-button-component button-swap"
+  onClick={[Function]} />
+`;

@@ -1,0 +1,34 @@
+$sidebar-width: 25vw;
+$page-margin: 2vw;
+
+.my-main-page-component {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 $page-margin;
+
+  .main {
+    flex: 1;
+    display: flex;
+    max-width: 100%;
+  }
+
+  .main__sidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: $sidebar-width;
+
+    .my-sidebar-component {
+      flex: 1;
+    }
+  }
+
+  .my-tasklist-component {
+    flex: 1;
+    max-width: 100vw - $sidebar-width - ($page-margin * 2);
+  }
+}
+
+
+

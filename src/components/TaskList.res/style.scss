@@ -1,0 +1,14 @@
+.my-tasklist-component {
+  display: flex;
+  flex-direction: column;
+
+  .my-textbox-component {
+    margin-left: auto;
+  }
+
+  .tasklist {
+    flex: 1;
+    overflow-y: scroll;
+  }
+}
+

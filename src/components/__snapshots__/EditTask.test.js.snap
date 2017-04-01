@@ -1,0 +1,20 @@
+exports[`Components :: EditTask should not render children 1`] = `[Function]`;
+
+exports[`Components :: EditTask should render self and subcomponents 1`] = `
+<div
+  className="my-editTask-component">
+  <div
+    className="buttons-container">
+    <button
+      onClick={[Function]}>
+      Save changes
+    </button>
+    <button
+      onClick={[Function]}>
+      Cancel
+    </button>
+  </div>
+  <div
+    className="test-class" />
+</div>
+`;

@@ -1,0 +1,70 @@
+exports[`Containers :: MainPageCategory should render self and subcomponents 1`] = `
+<div
+  className="my-categoryContainer-component">
+  <Category
+    id={0}
+    onExtend={[Function]}
+    title="New title">
+    <Button
+      onClick={[Function]}
+      type="edit" />
+    <Button
+      onClick={[Function]}
+      type="delete" />
+    <Button
+      onClick={[Function]}
+      type="add" />
+  </Category>
+  <div
+    className="categories categories_extended">
+    <div
+      className="testClass" />
+  </div>
+</div>
+`;
+
+exports[`Containers :: MainPageCategory should render self and subcomponents with 
+    not extended container 1`] = `
+<div
+  className="my-categoryContainer-component">
+  <Category
+    id={0}
+    onExtend={[Function]}
+    title="New title">
+    <Button
+      onClick={[Function]}
+      type="edit" />
+    <Button
+      onClick={[Function]}
+      type="delete" />
+    <Button
+      onClick={[Function]}
+      type="add" />
+  </Category>
+  <div
+    className="categories categories_hidden">
+    <div
+      className="testClass" />
+  </div>
+</div>
+`;
+
+exports[`Containers :: MainPageCategory should render self and subcomponents without children 1`] = `
+<div
+  className="my-categoryContainer-component">
+  <Category
+    id={0}
+    onExtend={false}
+    title="New title">
+    <Button
+      onClick={[Function]}
+      type="edit" />
+    <Button
+      onClick={[Function]}
+      type="delete" />
+    <Button
+      onClick={[Function]}
+      type="add" />
+  </Category>
+</div>
+`;
