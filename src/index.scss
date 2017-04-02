@@ -40,4 +40,17 @@ a {
   text-decoration: none;
 }
 
+@media only screen and (max-width: 641px) {
+  .main {
+    flex-direction: column !important;
+  }
 
+  .my-tasklist-component .my-textbox-component {
+      margin-left: 0 !important;
+  }
+
+  .my-main-page-component .main__sidebar, .my-tasklist-component {
+    max-width: 100% !important;
+  }
+
+}
