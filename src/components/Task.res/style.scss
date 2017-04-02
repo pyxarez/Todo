@@ -1,3 +1,5 @@
+@import "./media-queries";
+
 $margin: 5rem;
 
 .my-task-component {
@@ -8,12 +10,14 @@ $margin: 5rem;
   align-items: center;
   height: auto;
 
-  input {
+
+  .task-input {
     margin-left: $margin;
+
+    @include task-input-mq;
   }
 
-  p {
-    flex: 1;
+  .task-paragraph {
     max-width: 60%;
     word-wrap: break-word;
     text-align: center;
@@ -21,5 +25,7 @@ $margin: 5rem;
 
   .my-button-component {
     margin-right: $margin;
+
+    @include my-task-button-component-mq;
   }
 }

@@ -1,0 +1,26 @@
+@import '../../core/variables';
+
+.my-checkBoxInput-component {
+  cursor:pointer;
+  height: inherit;
+
+  .checkBoxInput-hidden-input {
+    display: none;
+
+    &:checked + .checkBoxInput-styled-span {
+      background-color: $second-color;
+    }
+  }
+
+  .checkBoxInput-styled-span {
+    display: block;
+    position: relative;
+    width: 2rem;
+    height: inherit;
+    margin-right: 20px;
+    background-color: $third-color;
+    border-radius:0 50px 50px 0;
+    transition:all 0.2s ease-in-out;
+    box-shadow:inset 0 0 10px rgba(0,0,0,.6);
+  }
+}

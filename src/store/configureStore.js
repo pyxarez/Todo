@@ -1,7 +1,7 @@
 import rootReducer from './reducers/index';
 import { createStore, applyMiddleware } from 'redux';
 // import createLogger from 'redux-logger';
-import localStorageCaller from './middlewares/localStorageCaller';
+// import localStorageCaller from './middlewares/localStorageCaller';
 import thunk from 'redux-thunk';
 
 export default (initialState) => {
@@ -10,5 +10,5 @@ export default (initialState) => {
   return createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk, localStorageCaller));
+    applyMiddleware(thunk));
 }

@@ -27,6 +27,7 @@ getCategories().then((categories) => {
   })
 });
 
+
 ReactDOM.render((
   <Provider store={store}>
     <Router history={history}>

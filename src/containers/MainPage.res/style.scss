@@ -1,4 +1,5 @@
-$sidebar-width: 25vw;
+@import "../../core/queries";
+
 $page-margin: 2vw;
 
 .my-main-page-component {
@@ -11,13 +12,20 @@ $page-margin: 2vw;
     flex: 1;
     display: flex;
     max-width: 100%;
+
+    @include mq-641 {
+      flex-direction: column;
+    }
   }
 
   .main__sidebar {
     display: flex;
     flex-direction: column;
     flex: 1;
-    max-width: $sidebar-width;
+
+    @include mq-641 {
+      max-width: 100%;
+    }
 
     .my-sidebar-component {
       flex: 1;
@@ -25,7 +33,14 @@ $page-margin: 2vw;
   }
 
   .my-tasklist-component {
-    flex: 1;
-    max-width: 100vw - $sidebar-width - ($page-margin * 2);
+    flex: 2;
+
+    @include mq-780 {
+      flex: 1;
+    }
+
+    @include mq-641 {
+      max-width: 100%;
+    }
   }
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from './Button';
+
 import './EditTask.res/style.css';
 
 EditTask.propTypes = {
@@ -18,8 +20,8 @@ export default function EditTask({ onSave, onCancel, children }) {
   return (
     <div className="my-editTask-component">
       <div className="buttons-container">
-        <button onClick={onSave}>Save changes</button>
-        <button onClick={onCancel}>Cancel</button>
+        <Button onClick={onSave} value='Save changes'/>
+        <Button onClick={onCancel} value='Cancel' />
       </div>
       {children}
     </div>

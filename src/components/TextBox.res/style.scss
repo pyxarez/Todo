@@ -2,26 +2,19 @@
 
 .my-textbox-component {
   margin-bottom: 20px;
-  min-width: 40%;
-  display: flex;
+  max-width: 100%;
+  min-width: 50%;
   height: 2rem;
-  flex-flow: row wrap;
+  display: flex;
+  flex-flow: row nowrap;
 
-  .textbox {
-    &-input {
-      flex: 1;
-      padding: 0 1rem;
-      height: inherit;
-      border-radius: 7px 0 0 7px;
-      outline: none;
-      border: 1px solid $main-color;
-    }
+  .my-textInput-component {
+    flex: 1;
   }
-
+  
   .my-button-component {
     flex: 0 0 4rem;
     height: inherit;
     border-radius: 0 7px 7px 0;
   }
 }
-
