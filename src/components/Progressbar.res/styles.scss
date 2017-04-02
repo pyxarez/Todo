@@ -13,10 +13,10 @@
     border-radius: 4px;
     height: 13px;
     width: 0;
-    background: $progressbar-color;
+    background: $third-color;
   }
 
   .progressbar__state_full {
-    background: rgb(37, 163, 5);
+    background-color: $second-color;
   }
 }

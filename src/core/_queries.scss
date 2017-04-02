@@ -1,0 +1,7 @@
+@import './variables';
+
+@mixin mq-641 {
+  @media only screen and (max-width: $query-641px) {
+    @content;
+  }
+}
