@@ -4,6 +4,12 @@
 
   .my-textbox-component {
     margin-left: auto;
+
+    @media only screen and (max-width: 641px) {
+      & {
+        margin-left: 0;
+      }
+    }
   }
 
   .tasklist {
@@ -11,4 +17,3 @@
     overflow-y: scroll;
   }
 }
-

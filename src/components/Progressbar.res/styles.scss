@@ -6,10 +6,20 @@
   height: 15px;
   width: 100%;
 
+  @media only screen and (max-width: 641px) {
+    & {
+      margin-top: 1rem;
+    }
+  }
+
   .progressbar__state {
     border-radius: 4px;
     height: 13px;
     width: 0;
     background: $progressbar-color;
+  }
+
+  .progressbar__state_full {
+    background: rgb(37, 163, 5);
   }
 }

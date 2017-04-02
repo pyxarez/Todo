@@ -11,6 +11,12 @@ $page-margin: 2vw;
     flex: 1;
     display: flex;
     max-width: 100%;
+
+    @media only screen and (max-width: 641px) {
+      & {
+        flex-direction: column;
+      }
+    }
   }
 
   .main__sidebar {
@@ -18,6 +24,12 @@ $page-margin: 2vw;
     flex-direction: column;
     flex: 1;
     max-width: $sidebar-width;
+
+    @media only screen and (max-width: 641px) {
+      & {
+        max-width: 100%;
+      }
+    }
 
     .my-sidebar-component {
       flex: 1;
@@ -27,8 +39,11 @@ $page-margin: 2vw;
   .my-tasklist-component {
     flex: 1;
     max-width: 100vw - $sidebar-width - ($page-margin * 2);
+
+    @media only screen and (max-width: 641px) {
+       & {
+        max-width: 100%;
+      }
+    }
   }
 }
-
-
-
