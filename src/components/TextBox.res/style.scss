@@ -2,10 +2,15 @@
 
 .my-textbox-component {
   margin-bottom: 20px;
-  min-width: 40%;
-  display: flex;
+  max-width: 100%;
+  min-width: 50%;
   height: 2rem;
-  flex-flow: row wrap;
+  display: flex;
+  flex-flow: row nowrap;
+
+  .my-textInput-component {
+    flex: 1;
+  }
   
   .my-button-component {
     flex: 0 0 4rem;

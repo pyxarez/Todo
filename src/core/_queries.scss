@@ -5,3 +5,17 @@
     @content;
   }
 }
+
+@mixin mq-780 {
+  @media only screen and (max-width: $query-780px) {
+    @content;
+  }
+}
+
+@mixin mq-1200 {
+  @media only screen and (max-width: $query-1200px) {
+    @content;
+  }
+}
+
+

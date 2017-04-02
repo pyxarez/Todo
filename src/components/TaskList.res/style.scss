@@ -1,4 +1,4 @@
-@import "./media-queries";
+@import "../../core/queries";
 
 .my-tasklist-component {
   display: flex;
@@ -6,8 +6,15 @@
 
   .my-textbox-component {
     margin-left: auto;
+    
+    @include mq-780 {
+      margin-left: 1rem;
+    }
 
-    @include my-textbox-component-mq;
+    @include mq-641 {
+      margin-left: 0;
+    }
+
   }
 
   .tasklist {

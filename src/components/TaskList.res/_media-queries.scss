@@ -1,7 +1,0 @@
-@mixin my-textbox-component-mq {
-    @media only screen and (max-width: 641px) {
-      & {
-        margin-left: 0;
-      }
-    }
-}

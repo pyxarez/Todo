@@ -50,7 +50,9 @@ export class EditPageContainer extends Component {
 
     return (
       <div className="my-edit-page-component">
-        <Header title={task.title.slice(0, 15).concat('...')} />
+        <Header title={task.title.length > 18
+          ? task.title.slice(0, 15).concat('...')
+          : task.title}/>
         <div className="main">
           <Sidebar
             categoryContainer={EditPageCategoryContainer}
