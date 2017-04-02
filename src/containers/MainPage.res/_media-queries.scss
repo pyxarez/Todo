@@ -1,0 +1,23 @@
+@mixin main-mq {
+  @media only screen and (max-width: 641px) {
+    & {
+      flex-direction: column;
+    }
+  }
+}
+
+@mixin main__sidebar-mq {
+  @media only screen and (max-width: 641px) {
+    & {
+      max-width: 100%;
+    }
+  }
+}
+
+@mixin my-tasklist-component-mq {
+    @media only screen and (max-width: 641px) {
+       & {
+        max-width: 100%;
+      }
+    }
+}

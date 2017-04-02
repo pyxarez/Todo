@@ -1,3 +1,5 @@
+@import "./media-queries";
+
 .my-tasklist-component {
   display: flex;
   flex-direction: column;
@@ -5,11 +7,7 @@
   .my-textbox-component {
     margin-left: auto;
 
-    @media only screen and (max-width: 641px) {
-      & {
-        margin-left: 0;
-      }
-    }
+    @include my-textbox-component-mq;
   }
 
   .tasklist {
