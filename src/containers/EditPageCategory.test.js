@@ -34,8 +34,8 @@ describe('EditCategoryContainer', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render self and subconmponents \
-    without children and button', () => {
+  it(`should render self and subconmponents
+    without children and button`, () => {
     const { props } = setup();
     const newProps = {
       ...props,
@@ -63,8 +63,8 @@ describe('EditCategoryContainer', () => {
       );
   });
 
-  it('should render self and subconmponents \
-  with not extended container', () => {
+  it(`should render self and subconmponents
+  with not extended container`, () => {
     const { props } = setup();
     const newProps = {
       ...props,
