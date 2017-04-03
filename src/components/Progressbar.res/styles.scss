@@ -1,22 +1,29 @@
 @import '../../core/variables';
-@import './media-queries.scss';
+@import "../../core/queries";
+
+$primary-br: 10px;
+$secondary-br: $primary-br - 1px;
 
 .my-progressbar-component {
   border: 1px solid $main-color;
-  border-radius: 5px;
-  height: 15px;
+  border-radius: $primary-br;
+  height: 100%;
   width: 100%;
+  background: linear-gradient(to bottom, rgba(128, 128, 128, 0.7), #e2e2e2);
+  box-shadow: inset 0 1px  rgba(0, 0, 0, 0.3);
 
-  @include my-progressbar-component-mq;
+  @include mq-641 {
+      margin-top: 1rem;
+  };
 
   .progressbar__state {
-    border-radius: 4px;
-    height: 13px;
+    border-radius: $secondary-br;
+    height: 20px;
+    background: $not-completed-progressbar;
     width: 0;
-    background: $third-color;
   }
 
   .progressbar__state_full {
-    background-color: $second-color;
+    background: $completed-progressbar;
   }
 }

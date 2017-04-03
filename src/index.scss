@@ -1,4 +1,5 @@
 @import './core/variables';
+@import './core/queries';
 
 @font-face {
   font-family: KristenITC;
@@ -21,6 +22,10 @@ html {
 body {
   margin: 0;
   font-size: $font-size-standart;
+
+  @include mq-641 {
+    font-size: $font-size-mobile;
+  };
 }
 
 #root {

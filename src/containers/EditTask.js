@@ -45,8 +45,8 @@ export class EditTaskContainer extends Component {
       description
     };
 
-    this.props.saveTaskChanges(options);
-    browserHistory.goBack();
+    this.props.saveTaskChanges(options)
+      .then(() => { browserHistory.goBack(); });
   }
 
   handleCancelClick = () => {
@@ -72,6 +72,7 @@ export class EditTaskContainer extends Component {
         </div>
         <textarea
           ref={(taskDescription) => {this.taskDescription = taskDescription}}
+          placeholder='Type task description here'
           defaultValue={description}
           className="description"
           name="description"

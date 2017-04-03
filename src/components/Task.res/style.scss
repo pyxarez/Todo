@@ -1,6 +1,7 @@
 @import "./media-queries";
 
 $margin: 5rem;
+$checkbox-hw: 1.2rem;
 
 .my-task-component {
   display: flex;
@@ -8,9 +9,19 @@ $margin: 5rem;
   border: 1px solid black;
   margin-bottom: 3px;
   align-items: center;
-  height: auto;
 
+  .my-checkBoxInput-component {
+    margin-left: $margin;
+    height: $checkbox-hw;
+    width: $checkbox-hw;
 
+    .checkBoxInput-styled-span {
+      border-radius: 50% 50%;
+    }
+
+    @include task-input-mq;
+  }
+  
   .task-input {
     margin-left: $margin;
 
