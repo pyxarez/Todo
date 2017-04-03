@@ -20,6 +20,5 @@ src/**/*.css
 firebase.json
 database.rules.json
 functions
-static.json
 .idea
 .vscode
