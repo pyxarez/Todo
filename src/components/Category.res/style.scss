@@ -13,4 +13,9 @@
   .my-button-component {
     margin: 0 10px 0 0;
   }
+
+  .link-active {
+    transform: scale(1.02);
+    color: $category-active;
+  }
 }

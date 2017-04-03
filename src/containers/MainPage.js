@@ -66,7 +66,6 @@ export class MainPageContainer extends Component {
         <div className='main'>
           <div className='main__sidebar'>
             <TextBox
-              isFocused={true}
               onClick={addCategory}
               placeholder='Enter category title'/>
             <Sidebar

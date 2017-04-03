@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+
 import { Router, Route, browserHistory, Redirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { Provider } from 'react-redux';
-
-import configureStore from './store/configureStore';
 
 import { getCategories } from './api/api';
 import { GET_CATEGORIES } from './store/constants/Category';
@@ -38,7 +39,6 @@ ReactDOM.render((
       <Route path="/main/:id/:category/(:filter)" component={MainPageContainer} />
       <Route path="/edit/:categoryId/:taskId/:taskTitle" component={EditPageContainer} />
     </Router>
-  </Provider>
-  ),
+  </Provider>),
   document.getElementById('root')
 );
