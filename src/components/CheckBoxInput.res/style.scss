@@ -13,13 +13,10 @@
     }
   }
 
-  .checkBoxInput-styled-span_checked {
-    background-color: $second-color;
-  }
-
   .checkBoxInput-styled-span {
     display: block;
     position: relative;
+    border: 1px solid $main-color;
     border-radius:0 7px 7px 0;
     width: inherit;
     height: inherit;

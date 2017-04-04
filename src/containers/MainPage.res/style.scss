@@ -1,17 +1,17 @@
 @import "../../core/queries";
 
-$page-margin: 2vw;
 
 .my-main-page-component {
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0 $page-margin;
 
   .main {
     flex: 1;
     display: flex;
     max-width: 100%;
+    padding: 0 $page-padding;
+
 
     @include mq-641 {
       flex-direction: column;

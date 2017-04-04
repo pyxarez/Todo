@@ -47,7 +47,7 @@ export default class Filter extends Component {
           onChange={this.handleInputUpdate}
           className="filter__input"
           type="text"
-          placeholder="Search"/>
+          placeholder="Search task..."/>
         <Button onClick={this.handleClearClick} type="clear"/>
       </div>
     );

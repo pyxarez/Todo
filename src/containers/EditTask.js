@@ -75,9 +75,7 @@ export class EditTaskContainer extends Component {
           placeholder='Type task description here'
           defaultValue={description}
           className="description"
-          name="description"
-          cols="30"
-          rows="30" />
+          name="description" />
       </EditTask>
     );
   }

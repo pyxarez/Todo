@@ -1,7 +1,12 @@
 @import '../../core/variables';
+@import "../../core/queries";
 
 .my-filter-component {
   position: relative;
+
+  @include mq-641 {
+    flex: 1;
+  }
 
   .filter__input {
     height: 30px;
@@ -9,6 +14,12 @@
     border-radius: 5px;
     outline: none;
     padding: 0 25px 0 10px;
+    background: rgba(0, 0, 0, 0.15);
+    width: 100%;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.72);
+    }
   }
 
   .my-button-component {

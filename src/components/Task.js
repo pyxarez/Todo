@@ -18,17 +18,11 @@ export default function Task({
     handleDoneTaskClick,
     handleEditTaskClick
 }) {
-
-  if (title === '12345') {
-    // console.log('In the task')
-    // console.log( isDone);
-  }
   return (
     <div className="my-task-component">
       <CheckBoxInput
         defaultChecked={isDone}
         handleClick={handleDoneTaskClick}/>
-      {/* <input className='task-input' onChange={handleDoneTaskClick} checked={isDone} type="checkbox"/> */}
       <p className='task-paragraph'>{title}</p>
       <Button onClick={handleEditTaskClick} type="edit" />
     </div>

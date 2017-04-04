@@ -2,6 +2,10 @@ $main-color: #4D4D4D;
 $second-color: deepskyblue;
 $third-color: #FF2391;
 
+$header-color: linear-gradient(to bottom, $second-color, rgba(255, 255, 255, 0.25));
+$category-bg-color: linear-gradient(to right, white, #b1f6fa);
+$taskbg-color: linear-gradient(to right, white, #b1f6fa);
+
 $category-active: #77c53c;
 
 $button-add-color: #67ce5d;
@@ -9,7 +13,7 @@ $button-delete-color: rgba(249, 0, 0, 0.72);
 $button-edit-color: rgb(255, 228, 0);
 $button-extend-color: rgba(132, 139, 142, 0.61);
 $button-clear-color: $button-extend-color;
-$button-swap-color: rgba(174, 129, 222, 0.61);
+$button-swap-color: rgb(223, 220, 189);
 
 $not-completed-progressbar: repeating-linear-gradient(
                               -45deg,
@@ -21,19 +25,21 @@ $not-completed-progressbar: repeating-linear-gradient(
                             linear-gradient(to bottom, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
                             $third-color;
 $completed-progressbar: repeating-linear-gradient(
-                              -45deg,
-                              transparent,
-                              transparent 10%,
-                              rgba(0, 0, 0, .1) 10%,
-                              rgba(0, 0, 0, .1) 20%
-                            ),
-                            linear-gradient(to bottom, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
-                            $second-color;
+                          -45deg,
+                          transparent,
+                          transparent 10%,
+                          rgba(0, 0, 0, .1) 10%,
+                          rgba(0, 0, 0, .1) 20%
+                        ),
+                        linear-gradient(to bottom, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)),
+                        $second-color;
+
+$page-padding: 3vw;
 
 $font-stack: KristenITC, sans-serif;
 $font-size-standart: 16px;
 $font-size-mobile: 14px;
 
 $query-641px: 641px;
-$query-780px: 780px;
+$query-medium: 960px;
 $query-1200px: 1200px;

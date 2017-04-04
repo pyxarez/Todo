@@ -19,11 +19,11 @@ EditTask.propTypes = {
 export default function EditTask({ onSave, onCancel, children }) {
   return (
     <div className="my-editTask-component">
+      {children}
       <div className="buttons-container">
         <Button onClick={onSave} value='Save changes'/>
         <Button onClick={onCancel} value='Cancel' />
       </div>
-      {children}
     </div>
   );
 }

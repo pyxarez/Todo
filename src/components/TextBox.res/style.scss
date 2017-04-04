@@ -1,20 +1,26 @@
 @import '../../core/variables';
+@import "../../core/queries";
 
 .my-textbox-component {
-  margin-bottom: 20px;
   max-width: 100%;
   min-width: 50%;
   height: 2rem;
   display: flex;
   flex-flow: row nowrap;
+  margin-bottom: 1rem;
+
+  @include mq-641 {
+    margin-bottom: .5rem;
+  };
 
   .my-textInput-component {
     flex: 1;
   }
-  
+
   .my-button-component {
     flex: 0 0 4rem;
     height: inherit;
+    background: $button-add-color;
     border-radius: 0 7px 7px 0;
   }
 }

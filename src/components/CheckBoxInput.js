@@ -22,10 +22,7 @@ class CheckBoxInput extends React.Component {
           className='checkBoxInput-hidden-input'
           type="checkbox"
           defaultChecked={defaultChecked}/>
-        <span className={defaultChecked
-          ? 'checkBoxInput-styled-span checkBoxInput-styled-span_checked'
-          : 'checkBoxInput-styled-span'
-        }/>
+        <span className='checkBoxInput-styled-span'/>
       </label>
     );
   }

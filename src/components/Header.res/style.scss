@@ -4,10 +4,20 @@
 .my-header-component {
   display: flex;
   align-items: center;
-  margin-bottom: 25px;
   flex-wrap: wrap;
+  padding: 0 $page-padding;
+  background: $header-color;
+  margin-bottom: 2rem;
+
+  @include mq-641 {
+    margin-bottom: 1.4rem;
+  };
 
   .title {
     flex-grow: 3;
+
+    @include mq-641 {
+      width: 100%;
+    };
   }
 }

@@ -1,14 +1,18 @@
-@import "./media-queries";
+@import "../../core/variables";
+@import "../../core/queries";
 
 $margin: 5rem;
 $checkbox-hw: 1.2rem;
+$mobile-margin: 1rem;
 
 .my-task-component {
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
+  border-radius: 4px;
   margin-bottom: 3px;
   align-items: center;
+  background: $taskbg-color;
 
   .my-checkBoxInput-component {
     margin-left: $margin;
@@ -19,13 +23,9 @@ $checkbox-hw: 1.2rem;
       border-radius: 50% 50%;
     }
 
-    @include task-input-mq;
-  }
-  
-  .task-input {
-    margin-left: $margin;
-
-    @include task-input-mq;
+    @include mq-780 {
+      margin-left: $mobile-margin;
+    };
   }
 
   .task-paragraph {
@@ -37,6 +37,8 @@ $checkbox-hw: 1.2rem;
   .my-button-component {
     margin-right: $margin;
 
-    @include my-task-button-component-mq;
+    @include mq-780 {
+      margin-right: $mobile-margin;
+    };
   }
 }
