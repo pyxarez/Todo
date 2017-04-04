@@ -32,8 +32,12 @@ export class EditTaskContainer extends Component {
     const isDone = checkboxInput.checked;
     const description = this.taskDescription.value;
 
-    if (!validateInput(title)) {
-      alert('Enter correct task title');
+    if (title === null) return;
+    else if (!validateInput(title)) {
+      alert("Type something please");
+      return;
+    } else if (title.length > 30) {
+      alert("Too much characters");
       return;
     }
 

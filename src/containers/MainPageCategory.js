@@ -47,8 +47,16 @@ export class Container extends Component {
       renameCategory
     } = this.props;
     const newTitle = prompt("Enter new title", title);
-    if (!newTitle) return;
 
+    if (title === null) return;
+    else if (!validateInput(title)) {
+      alert("Type something please");
+      return;
+    } else if (title.length > 30) {
+      alert("Too much characters");
+      return;
+    }
+    
     renameCategory(id, newTitle);
   }
 
