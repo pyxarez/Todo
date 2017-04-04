@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { validateInput } from '../utils/helpers';
+
 import {
   addNestedCategory,
   deleteCategory,
@@ -56,7 +58,15 @@ export class Container extends Component {
       addNestedCategory
     } = this.props;
     const title = prompt("Enter title");
-    if (!title) return;
+
+    if (title === null) return;
+    else if (!validateInput(title)) {
+      alert("Type something please");
+      return;
+    } else if (title.length > 30) {
+      alert("Too much characters");
+      return;
+    }
 
     addNestedCategory(id, title);
   }

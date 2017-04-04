@@ -24,7 +24,7 @@ export default function Category({ id, title, children, onExtend }) {
     <div className="my-category-component">
       {onExtend &&
         <Button type="extend" onClick={onExtend}/>}
-      <Link to={`/main/${id}/${title}/`}>{title}</Link>
+      <Link to={`/main/${id}/${title}/`}><p>{title}</p></Link>
       {children}
     </div>
   );

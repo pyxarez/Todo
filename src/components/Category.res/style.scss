@@ -1,8 +1,10 @@
 @import '../../core/variables';
+@import '../../core/queries';
 
 .my-category-component {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   color: $second-color;
   border: 1px solid $main-color;
   padding: 3px;
@@ -12,11 +14,15 @@
   background: $category-bg-color;
 
   .my-button-component {
-    margin: 0 10px 0 0;
+    margin: 0 5px 0 0;
   }
 
-  .link-active {
-    transform: scale(1.02);
-    color: $category-active;
+  p {
+    margin: 0;
+
+    @include mq-641 {
+      max-width: 8.3rem;
+      word-wrap: break-word;
+    }
   }
 }
