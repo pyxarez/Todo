@@ -23,9 +23,7 @@ export const validateInput = (value) =>  {
   return !!value.trim()
 };
 
-const containsOnlyNumber = (string) => {
-  return string.match(/^\d+$/);
-}
+const containsOnlyNumber = (string) => string.match(/^\d+$/); 
 
 export const toNumberKeyValues = (object) =>  {
   let newObject = {};
