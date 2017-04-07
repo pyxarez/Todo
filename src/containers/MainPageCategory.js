@@ -48,11 +48,12 @@ export class Container extends Component {
     } = this.props;
     const newTitle = prompt("Enter new title", title);
 
-    if (title === null) return;
-    else if (!validateInput(title)) {
+    console.log(newTitle);
+    if (newTitle === null || title === newTitle) return;
+    else if (!validateInput(newTitle)) {
       alert("Type something please");
       return;
-    } else if (title.length > 30) {
+    } else if (newTitle.length > 30) {
       alert("Too much characters");
       return;
     }

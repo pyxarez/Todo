@@ -34,6 +34,7 @@ ReactDOM.render((
     <Router history={history}>
       <Redirect from='/' to='/main' />
       <Redirect from='' to='/main' />
+      <Redirect from='/en' to='/main' />
 
       <Route path="/main" component={MainPageContainer} />
       <Route path="/main/:id/:category/(:filter)" component={MainPageContainer} />
